@@ -405,7 +405,7 @@ func! Main() abort
 endfunc
 
 autocmd BufRead      *.md,*.mkd,*.markdown call Main()
-autocmd BufWritePost *.md,*.mkd,*.markdown call AutoGen()
+"autocmd BufWritePost *.md,*.mkd,*.markdown call AutoGen()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
