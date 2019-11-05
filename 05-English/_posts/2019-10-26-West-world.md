@@ -7,7 +7,7 @@ title: 西部世界台词
 
 
 Hell is empty and all the devils are here.
-地域空荡荡，恶魔在人间。
+地狱空荡荡，恶魔在人间。
 
 When we are born, we cry we are come to this great stage of fools.
 

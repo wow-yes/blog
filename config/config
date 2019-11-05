@@ -44,8 +44,8 @@ bindsym $mod+l    exec --no-startup-id i3lock -i ~/.lock.png&
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # force floating for all new windows
 #for_window [class="[.]*"] floating enable
-# floating_minimum_size 1200 x 1000 
-floating_maximum_size 1200 x 768
+#floating_minimum_size 1200 x 1000 
+#floating_maximum_size 1200 x 768
 for_window [title="qtcreator_process_stub"] floating enable
 for_window [title="MathJax Equation Source - Mozilla Firefox"] floating enable
 #for_window [title="~ - VIFM"] floating enable
@@ -59,7 +59,8 @@ for_window [class="netease-cloud-music" instance="netease-cloud-music"] floating
 for_window [class="Zotero" instance="Zotero"] floating disable
 for_window [class="mathpix-snipping-tool" instance="Mathpix Snipping Tool"] floating enable
 for_window [class="xpad" instance="xpad"] floating enable
-for_window [class="Matplotlib" instance="matplotlib"] floating enable
+#for_window [class="matplotlib" instance="matplotlib"] floating enable, resize set 1200 1000
+for_window [class="matplotlib" instance="matplotlib"] floating disable
 for_window [class="Tk" instance="tk"] floating enable
 for_window [class="Arandr" instance="arandr"] floating enable
 for_window [class="R_x11" instance="r_x11"] floating enable
@@ -169,22 +170,22 @@ bindsym $mod+Shift+1 move container to workspace "1:默认空间   "
 
 bindsym $mod+2 workspace                         "2:文档笔记   "
 bindsym $mod+Shift+2 move container to workspace "2:文档笔记   "
-assign  [class="ReText"]                         "2:文档笔记   "
-assign  [class="Gvim"]                           "2:文档笔记   "
+#assign  [class="ReText"]                         "2:文档笔记   "
+#assign  [class="Gvim"]                           "2:文档笔记   "
 
 bindsym $mod+3 workspace                         "3:资料阅读   "
 bindsym $mod+Shift+3 move container to workspace "3:资料阅读   "
-assign [class="Zotero"]                          "3:资料阅读   "
-assign [class="Foxit Reader"]                    "3:资料阅读   "
+#assign [class="Zotero"]                          "3:资料阅读   "
+#assign [class="Foxit Reader"]                    "3:资料阅读   "
 
 bindsym $mod+4 workspace                         "4:文件管理   "
 bindsym $mod+Shift+4 move container to workspace "4:文件管理   "
-assign [class="Thunar"]                          "4:文件管理   "
-
+#assign [class="Thunar"]                          "4:文件管理   "
+#
 bindsym $mod+5 workspace                         "5:网络网页   "
 bindsym $mod+Shift+5 move container to workspace "5:网络网页   "
-assign [class="Firefox"]                         "5:网络网页   "
-assign [class="Filezilla"]                       "5:网络网页   "
+#assign [class="Firefox"]                         "5:网络网页   "
+#assign [class="Filezilla"]                       "5:网络网页   "
 
 # move focused container to workspace
 bindsym $mod+6 workspace                         "6:           "
