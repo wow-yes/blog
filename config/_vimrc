@@ -59,6 +59,8 @@ Plugin 'godlygeek/tabular'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mileszs/ack.vim'
 
 "语法检查 {{{
 Plugin 'vim-syntastic/syntastic'
@@ -211,8 +213,8 @@ set autoread            " 设置当文件被改动时自动载入
 set autowrite           "自动保存 
 set tabstop=4           "设置制表符宽度"
 set softtabstop=4
-set textwidth=79
-set fo+=tMm
+"set textwidth=79
+"set fo+=tMm
 set cc=80
 set shiftwidth=4        "设置缩进的空格数"
 set nowrap                "设置自动断行
@@ -404,7 +406,7 @@ func! Main() abort
 
 endfunc
 
-autocmd BufRead      *.md,*.mkd,*.markdown call Main()
+autocmd BufRead      *.md,*.mkd,*.markdown,*.page call Main()
 "autocmd BufWritePost *.md,*.mkd,*.markdown call AutoGen()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 

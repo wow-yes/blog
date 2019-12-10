@@ -8,9 +8,9 @@ exec --no-startup-id xrdb -merge .Xresources &
 #exec --no-startup-id ibus-daemon -d -x&
 exec --no-startup-id fcitx &
 #exec --no-startup-id workrave&
-exec --no-startup-id syncthing&
-exec --no-startup-id wicd-gtk -t &
-#exec --no-startup-id nm-applet &
+#exec --no-startup-id syncthing&
+#exec --no-startup-id wicd-gtk -t &
+exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id synclient TouchpadOff=1 &
 exec --no-startup-id redshift-gtk &
@@ -30,7 +30,7 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5% &
 bindsym Print                 exec --no-startup-id scrot -s /tmp/$(date +%F-%T).png
 bindsym Scroll_Lock           exec --no-startup-id i3lock-fancy
 
-bindsym Mod1+e    exec --no-startup-id thunar &
+bindsym Mod1+e    exec --no-startup-id pcmanfm &
 #bindsym $mod+l    exec --no-startup-id i3lock-fancy&
 bindsym $mod+l    exec --no-startup-id i3lock -i ~/.lock.png&
 
@@ -45,7 +45,7 @@ bindsym $mod+l    exec --no-startup-id i3lock -i ~/.lock.png&
 # force floating for all new windows
 #for_window [class="[.]*"] floating enable
 #floating_minimum_size 1200 x 1000 
-#floating_maximum_size 1200 x 768
+floating_maximum_size 1200 x 768
 for_window [title="qtcreator_process_stub"] floating enable
 for_window [title="MathJax Equation Source - Mozilla Firefox"] floating enable
 #for_window [title="~ - VIFM"] floating enable
