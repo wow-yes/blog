@@ -1,2 +1,2 @@
-mklink C:\Users\Libre\.vimrc D:\OneDrive\Projects\Blog\config\_vimrc
-mklink C:\Users\Libre\.ctags D:\OneDrive\Projects\Blog\config\ctags.cnf
+mklink C:\Users\%USERNAME%\_vimrc D:\OneDrive\Projects\Blog\config\_vimrc
+mklink C:\Users\%USERNAME%\.ctags D:\OneDrive\Projects\Blog\config\ctags.cnf

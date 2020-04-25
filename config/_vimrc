@@ -59,7 +59,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 
 "语法检查 {{{
@@ -213,8 +213,8 @@ set autoread            " 设置当文件被改动时自动载入
 set autowrite           "自动保存 
 set tabstop=4           "设置制表符宽度"
 set softtabstop=4
-"set textwidth=79
-"set fo+=tMm
+set textwidth=79
+set fo+=tMm
 set cc=80
 set shiftwidth=4        "设置缩进的空格数"
 set nowrap                "设置自动断行
@@ -339,7 +339,8 @@ func! Md2Doc()
 endfunc 
 
 func! Md2Htm()
-    let cmd="pandoc -s --mathjax=file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML --wrap=preserve --columns=80 --toc "
+    "let cmd="pandoc -s --mathjax=file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML --wrap=preserve --columns=80 --toc "
+    let cmd="pandoc -s --mathjax --wrap=preserve --columns=80 --toc "
     let cmd.="-f markdown+east_asian_line_breaks+multiline_tables "
     if filereadable(expand("%:r").".css")
         let cmd.="--css=".expand("%:r").".css "
