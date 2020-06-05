@@ -17,6 +17,7 @@ haven't done anything.
 You want to associate with people who is better than you're. You get choices as
 you go down the line, and who you admire, who you want to copy.
 
+2020年
 
 
 
