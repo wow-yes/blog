@@ -291,4 +291,6 @@ defaults:
       comments: # true
       share: false 
       related: true
+      mermaid_enable: true
+      
 
