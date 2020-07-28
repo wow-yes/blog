@@ -225,5 +225,5 @@ plugins:
   - jemoji
 
 collections:
-  07-MLwithPython:
+  07MLwithPython:
     output: true
