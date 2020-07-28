@@ -227,3 +227,4 @@ plugins:
 collections:
   07MLwithPython:
     output: true
+    foo: bar
