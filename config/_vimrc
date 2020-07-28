@@ -185,6 +185,22 @@ set foldmarker={{{,}}} " 折叠标志，这个是默认的
 set foldcolumn=2 " 折叠位宽
 if has('win32')
     set guifont=Consolas:h14
+    "set guifont=Bitstream_Vera_Sans_Mono \12 
+    "set gfw=KaiTi_GB2312:h12
+    "新細明體：PMingLiU
+    "細明體：MingLiU
+    "標楷體：DFKai-SB
+    "黑体：SimHei
+    "宋体：SimSun
+    "新宋体：NSimSun
+    "仿宋：FangSong
+    "楷体：KaiTi
+    "仿宋_GB2312：FangSong_GB2312
+    "楷体_GB2312：KaiTi_GB2312
+    "微軟正黑體：Microsoft JhengHei
+    "微软雅黑体：
+    "set gfw=Microsoft\ YaHei:h12
+    set gfw=SimHei:h14
 endif
 if has('unix')
     set guifont=DejaVu\ Sans\ Mono\ 12
