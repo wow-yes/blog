@@ -225,6 +225,6 @@ plugins:
   - jemoji
 
 collections:
-  arduino:
-    output:         true
-  #  permalink:      /:collection/:path
+    staff_members:
+        people: true
+
