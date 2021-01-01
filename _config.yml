@@ -224,7 +224,3 @@ plugins:
   - jekyll-sitemap
   - jemoji
 
-collections:
-    - staff_members:
-        people: true
-
