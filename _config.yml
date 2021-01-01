@@ -225,6 +225,6 @@ plugins:
   - jemoji
 
 collections:
-    staff_members:
+    - staff_members:
         people: true
 

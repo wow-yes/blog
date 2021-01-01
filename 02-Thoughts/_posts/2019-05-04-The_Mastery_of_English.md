@@ -12,7 +12,6 @@ remember as many words as you can without the essential grammar knowledge. The
 mastery of English calls for a lot of hard work and background knowledge about
 it, which maybe take a long time to learn and handle.
 
-
 Pattern of thinking is another crucial part of English learning. Different
 cultures make the different ways of thinking. If you understand the thinking
 pattern of foreigners, it will be more easier for you to communicate with them.
