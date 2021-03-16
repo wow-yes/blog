@@ -42,7 +42,7 @@ let NERDTreeWinSize=25
 
 "Plugin 'vim-scripts/Vim-R-plugin'
 
-Plugin 'vim-voom/VOoM'
+"Plugin 'vim-voom/VOoM'
 
 Plugin 'tomasr/molokai'
 let g:molokai_original = 1
@@ -57,7 +57,7 @@ Plugin 'godlygeek/tabular'
 
 "快速查找
 "Plugin 'kien/ctrlp.vim'
-Plugin 'Yggdroot/LeaderF'
+"Plugin 'Yggdroot/LeaderF'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
@@ -203,7 +203,7 @@ if has('win32')
     set gfw=SimHei:h14
 endif
 if has('unix')
-    set guifont=DejaVu\ Sans\ Mono\ 12
+    set guifont=DejaVu\ Sans\ Mono\ 14
     "set guifont=Noto\ Mono\ Regular\ 14
 endif
 set nobomb
@@ -252,6 +252,8 @@ highlight StatusLine   guifg=SlateBlue guibg=Black ctermfg=Blue ctermbg=Black" �
 highlight StatusLineNC guifg=SlateBlue guibg=Black ctermfg=Blue ctermbg=Black" 状态行颜色
 set laststatus=2 " //使得状态栏和命令行分开
 set ruler " 在编辑过程中，在右下角显示光标位置的状态行
+
+autocmd BufWritePre *.* :%s/\s\+$//e
 
 set cursorline   
 
@@ -322,10 +324,14 @@ endfunc
 
 func!  MdIab()
 
+    set wrap nolist
+    set cc=0
+    set tw=0
     iab iday <c-r>=strftime("20%y年%m月%d日 %H:%M:%S")<cr> 
     iab ss <!--{{{-->
     iab ee <!--}}}-->
 
+    iab bmtx <c-r>=strftime("\\begin{bmatrix} \\end{bmatrix}")<cr><ESC>3h
     iab sum <c-r>=strftime("\\sum^{}_{}")<cr><ESC>3h
     iab inf <c-r>=strftime("\\infty^{}_{}")<cr><ESC>3h
     iab fr <c-r>=strftime("\\frac{}{}")<cr><ESC>2h
@@ -335,7 +341,8 @@ func!  MdIab()
 endfunc
 
 func! Md2Doc()
-    let cmd="pandoc -s --mathjax=file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML --wrap=preserve --columns=80 --toc "
+    "let cmd="pandoc -s --mathjax=file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML --wrap=preserve --columns=80 --toc "
+    let cmd="pandoc -s --mathjax --wrap=preserve --columns=80 --toc "
     let cmd.="-f markdown+east_asian_line_breaks+multiline_tables "
     if filereadable("reference.docx")
         let cmd.="--reference-doc=reference.docx "
@@ -356,7 +363,7 @@ endfunc
 
 func! Md2Htm()
     "let cmd="pandoc -s --mathjax=file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML --wrap=preserve --columns=80 --toc "
-    let cmd="pandoc -s --mathjax --wrap=preserve --columns=80 --toc "
+    let cmd="pandoc --mathml --wrap=preserve --columns=80 --toc "
     let cmd.="-f markdown+east_asian_line_breaks+multiline_tables "
     if filereadable(expand("%:r").".css")
         let cmd.="--css=".expand("%:r").".css "
