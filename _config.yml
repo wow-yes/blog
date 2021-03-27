@@ -214,6 +214,10 @@ defaults:
       show_edit_on_github: false
       show_subscribe: true
       pageview: true
+  - scope:
+      path: "/_staff_members/*"
+    values:
+      layout: article
 
 
 ## => Plugins
@@ -223,6 +227,10 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+
+relative_links:
+    enabled: true
+    collections: true
 
 collections:
     my_collection:
