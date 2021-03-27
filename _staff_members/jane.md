@@ -1,5 +1,7 @@
 ---
+layout: page
 name: Jane Doe
-position: Developer
+chapter: Developer
 ---
+
 Jane has worked on Jekyll for the past *five years*.
