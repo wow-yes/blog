@@ -2,6 +2,7 @@
 layout: page
 name: lex lex
 chapter: Developer
+tags: xxx
 ---
 
 	Jane has worked on Jekyll for the past *five years*.
