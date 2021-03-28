@@ -216,9 +216,14 @@ defaults:
       pageview: true
   - scope:
       path: ""
-      type: "staff_members"
+      type: staff_members
     values:
-      layout: article
+        layout: page
+  - scope:
+      path: ""
+      type: my_collection
+    values:
+        layout: page
 
 
 ## => Plugins
@@ -237,7 +242,5 @@ collections:
     my_collection:
         output: true
     staff_members:
-        #relative_directory: '_staff_menmbers/'
-        permalink: _site/:path.html
         output: true
         people: true
