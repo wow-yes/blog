@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
 # gem "jekyll-text-theme", path: "../"
+#gem "github-pages"
+#gem "github-pages-health-check"
+gem "kramdown-parser-gfm"
 gem "jekyll-text-theme"
 
 gem "tzinfo-data"

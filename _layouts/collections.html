@@ -2,11 +2,12 @@
 layout: article
 ---
 
-<h2> 人物志</h2>
+
+<h2> People</h2>
 
 {% for staff_member in site.staff_members %}
-    <a href="{{ staff_member.url }}">
-        {{ staff_member.name }} - {{ staff_member.chapter }}
+<a href="{{site.baseurl}}{{ staff_member.url }}">
+    {{ staff_member.name }}
     </a>
     <br>
 {% endfor %}
