@@ -234,13 +234,7 @@ plugins:
   - jekyll-sitemap
   - jemoji
 
-relative_links:
-    enabled: true
-    collections: true
-
 collections:
-    my_collection:
-        output: true
-    staff_members:
-        output: true
-        people: true
+  staff_members:
+    output: true
+    people: true
