@@ -218,7 +218,7 @@ defaults:
       path: ""
       type: staff_members
     values:
-      layout: article
+      layout: page
   - scope:
       path: ""
       type: my_collection
