@@ -1,6 +1,7 @@
 ---
 layout: page
 name: Jane Doe
+collection: staff_menber
 chapter: Developer
 ---
 

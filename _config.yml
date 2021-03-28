@@ -218,12 +218,12 @@ defaults:
       path: ""
       type: staff_members
     values:
-        layout: page
+      layout: article
   - scope:
       path: ""
       type: my_collection
     values:
-        layout: page
+      layout: article
 
 
 ## => Plugins
