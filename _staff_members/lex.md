@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: article
 name: lex lex
 chapter: Developer
 tags: xxx
