@@ -28,3 +28,6 @@ pip3 install -U numpy matplotlib pandas ipython scipy tk \
 sudo apt-get autoremove
 sudo apt-get clean
 
+ssh-keygen -C "lipengbo@msn.com"
+
+
