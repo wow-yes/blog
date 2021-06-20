@@ -213,15 +213,9 @@ defaults:
       pageview: true
   - scope:
       path: ""
-      type: staff_members
-    values:
-      layout: page
-  - scope:
-      path: ""
-      type: my_collection
+      type: peoples
     values:
       layout: article
-
 
 ## => Plugins
 ##############################
@@ -231,6 +225,6 @@ plugins:
   - jemoji
 
 collections:
-  staff_members:
+  peoples:
     output: true
     people: true
