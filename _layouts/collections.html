@@ -3,13 +3,10 @@ layout: article
 ---
 
 
-<h2> People</h2>
+<h3> People</h3>
 
-{% for staff_member in site.staff_members %}
-<a href="{{site.baseurl}}{{ staff_member.url }}">
-    {{ staff_member.name }}
-    </a>
-    <br>
+{% for people in site.peoples %}
+    <a href="{{site.baseurl}}{{people.url }}"> {{ people.name }} </a> <br>
 {% endfor %}
 
 

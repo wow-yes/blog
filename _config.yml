@@ -215,7 +215,7 @@ defaults:
       path: ""
       type: peoples
     values:
-      layout: article
+      layout: page
 
 ## => Plugins
 ##############################
