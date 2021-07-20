@@ -1,6 +1,5 @@
 pwd=`cd $(dirname $0);pwd -P`
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 
 ln -fs $(pwd)/_vimrc ~/.vimrc
 ln -sf $(pwd)/bashrc ~/.bashrc
