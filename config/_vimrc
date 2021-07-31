@@ -281,7 +281,7 @@ vmap cc :w !xsel -i -b<CR><CR>
 "nmap pp :r!xsel -p<CR><CR>
 "nmap ps :r!xsel -s<CR><CR>
 "nmap pb :r!xsel -b<CR><CR>
-au InsertLeave * silent! w
+"au InsertLeave * silent! w
 
 set dictionary=$HOME/words
 set dictionary+=/usr/share/dict/words
@@ -298,9 +298,9 @@ set tags+=./../../../../tags
 
 set autochdir
 
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+"if has("autocmd")
+"    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
 
 
 func Set()
