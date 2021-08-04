@@ -1,3 +1,7 @@
+2019-10-14-curtin-cors
+
+2019-10-14-curtin-cors
+
 ---
 tags: linux
 toc : true
@@ -11,6 +15,6 @@ Curtin大学的CORS站提供多个基站的长时间观测数据。可以从其�
 
 其站点的主要分布如下
 
-![cors](../imgs/2019-10-14-curtin-cors-1.png)
+![cors](../../_resources/4cc5d639ec5346d6b514c658cebd5813.png)
 
 

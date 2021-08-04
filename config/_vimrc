@@ -12,7 +12,7 @@ call vundle#begin()
 
 " 必须安装，let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-voom/VOoM'
+Plugin 'vim-scripts/VOoM'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
@@ -42,9 +42,6 @@ let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
 
 "Plugin 'vim-scripts/Vim-R-plugin'
-
-"Plugin 'vim-voom/VOoM'
-
 Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
@@ -254,7 +251,7 @@ highlight StatusLineNC guifg=SlateBlue guibg=Black ctermfg=Blue ctermbg=Black" �
 set laststatus=2 " //使得状态栏和命令行分开
 set ruler " 在编辑过程中，在右下角显示光标位置的状态行
 
-autocmd BufWritePre *.* :%s/\s\+$//e
+"autocmd BufWritePre *.* :%s/\s\+$//e
 
 set cursorline
 
