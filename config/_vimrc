@@ -329,13 +329,14 @@ func!  MdIab()
     iab ss <!--{{{-->
     iab ee <!--}}}-->
 
-    iab bmtx <c-r>=strftime("\\begin{bmatrix} \\end{bmatrix}")<cr><ESC>3h
+    iab bmtx \begin{bmatrix} \end{bmatrix}
     iab sum <c-r>=strftime("\\sum^{}_{}")<cr><ESC>3h
     iab inf <c-r>=strftime("\\infty^{}_{}")<cr><ESC>3h
     iab fr <c-r>=strftime("\\frac{}{}")<cr><ESC>2h
     iab ff <c-r>=strftime("\$f(x) = a_0 +
                 \\\sum^{\\infty}_{k=1} a_k \\cos(kx) + b_k \\sin(kx)\$"
                 \)<cr><ESC>
+    iab pbk <div STYLE="page-break-after: always;"></div>
 endfunc
 
 func! Md2Doc()
