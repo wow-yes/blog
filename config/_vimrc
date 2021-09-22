@@ -12,7 +12,6 @@ call vundle#begin()
 
 " 必须安装，let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/VOoM'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
@@ -411,7 +410,7 @@ func! Main() abort
 
     call MdIab()
 
-    map <F3> :Voom pandoc<cr>
+    "map <F3> :Voom pandoc<cr>
     map <F5> :call Md2Htm()<cr>
     map <F6> :call Md2Doc()<cr>
     map <F8> :call PrvHtm()<cr>
