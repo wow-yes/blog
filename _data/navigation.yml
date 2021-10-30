@@ -15,13 +15,26 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Collections
-      zh-Hans : &ZH_HANS  合集
+      en      : &EN       Read
+      zh-Hans : &ZH_HANS  读书
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
       # @end locale config
-    url: /collections.html
+    url: /read.html
+
+
+  - titles:
+      # @start locale config
+      en      : &EN       Math
+      zh-Hans : &ZH_HANS  数学
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      # @end locale config
+    url: /math.html
+
+
 
   - titles:
       # @start locale config

@@ -14,7 +14,7 @@ sudo apt-get dist-upgrade
 
 sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
-    exuberant-ctags tig graphviz rsync \
+     tig graphviz rsync doxygen \
     htop libgeos++-dev proj-bin  libproj-dev libgeos.dev
 
 #sudo apt-get install tcl-dev tk-dev

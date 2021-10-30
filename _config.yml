@@ -180,6 +180,17 @@ markdown    : kramdown
 highlighter : rouge
 permalink   : date
 
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
 exclude:
   - CHANGELOG.md
   - HOW_TO_RELEASE.md
@@ -204,18 +215,25 @@ defaults:
       type: posts
     values:
       layout: article
-      sharing: true
+      sharing: false
       license: true
       aside:
         toc: true
       show_edit_on_github: false
-      show_subscribe: true
+      show_subscribe: false
       pageview: true
   - scope:
       path: ""
-      type: peoples
+      type: read
     values:
       layout: page
+  - scope:
+      path: ""
+      type: math
+    values:
+      layout: page
+
+
 
 ## => Plugins
 ##############################
@@ -225,6 +243,8 @@ plugins:
   - jemoji
 
 collections:
-  peoples:
+  read:
     output: true
-    people: true
+  math:
+    output: true
+  
