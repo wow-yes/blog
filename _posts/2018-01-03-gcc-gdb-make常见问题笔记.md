@@ -1,5 +1,5 @@
 ---
-tags: gdb 
+tags: Linux
 toc : true
 ---
 

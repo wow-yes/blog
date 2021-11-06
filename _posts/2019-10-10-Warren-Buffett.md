@@ -1,4 +1,7 @@
-
+---
+tags: 随手摘录
+title: 巴菲特语录
+---
 
 # How you define ture success
 

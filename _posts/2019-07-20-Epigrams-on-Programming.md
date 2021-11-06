@@ -1,7 +1,6 @@
-2019-07-20-Epigrams-on-Programming
-
-2019-07-20-Epigrams-on-Programming
-
+---
+tags: 随手摘录
+---
 
 by Alan J. PeriLs
 Yale University

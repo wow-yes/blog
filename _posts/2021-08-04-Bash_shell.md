@@ -1,3 +1,7 @@
+---
+tags: Linux
+title: Bash Shell操作快捷键
+---
 
 1. 光标移动
 
