@@ -1,6 +1,6 @@
 ---
 tags: Qt
-toc : true
+toc:true
 ---
 
 ## 在已经打开的文件中切换
