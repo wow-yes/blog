@@ -93,7 +93,7 @@ let g:gutentags_define_advanced_commands = 1
 ""设置标签tags
 set tags=./.tags;,.tags
 "设置根据打开文件自动更换目录
-"set autochdir
+set autochdir
 
 " gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
@@ -394,9 +394,10 @@ set dictionary+=./../../../words.dict
 
 set autochdir
 
-"if has("autocmd")
-"    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+" 记住上次文件打开的位置
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 
 func Set()

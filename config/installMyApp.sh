@@ -6,16 +6,16 @@ sudo apt-get dist-upgrade
 
 # install program software
 # install
-#sudo apt-get install i3-wm i3lock-fancy redshift-gtk feh firefox pcmanfm \
-#    vim git gcc  build-essential gfortran \
+#sudo apt-get install i3-wm i3lock-fancy redshift-gtk  firefox pcmanfm \
 #    lxappearance lxterminal gnome-disk-utility flameshot nomacs \
 #    simplescreenrecorder smplayer bleachbit gparted gtkorphan i3status \
 #    i3blocks blueman rofi  lxappearance nomacs pcmanfm
 
 sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
-     tig graphviz rsync doxygen \
-    htop libgeos++-dev proj-bin  libproj-dev libgeos.dev
+     tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev \
+    htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global \
+    neofetch upower pciutils
 
 #sudo apt-get install tcl-dev tk-dev
 
