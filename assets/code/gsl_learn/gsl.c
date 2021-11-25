@@ -42,10 +42,9 @@ int main()
     for (int i = 0; i < dim; ++i) {
         gsl_vector_set(mu, i, pars[i]);
     }
-    gsl_matrix* L = gsl_matrix_alloc(dim, dim);
+    gsl_matrix *L = gsl_matrix_alloc(dim, dim);
     for (int i = 0; i < dim; ++i) {
         for (int j = 0; j < dim; ++j) {
-            // printf("gsl_matrix_set(L, %d, %d, covmat[%d]) = %f\n", i, j, i * dim + j, covmat[i * dim + j]);
             gsl_matrix_set(L, i, j, covmat[i * dim + j]);
         }
     }

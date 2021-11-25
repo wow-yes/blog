@@ -2,6 +2,7 @@ pwd=`cd $(dirname $0);pwd -P`
 
 
 ln -fs $(pwd)/_vimrc ~/.vimrc
+ln -fs $(pwd)/gtags.conf ~/.gtags.conf
 ln -sf $(pwd)/bashrc ~/.bashrc
 ln -sf $(pwd)/Xresources ~/.Xresources
 

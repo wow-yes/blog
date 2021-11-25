@@ -83,8 +83,8 @@ let g:syntastic_enable_balloons = 1
 
 "符号索引 Plugin 'ludovicchabant/vim-gutentags' {{{
 "
-let $GTAGSLABEL = 'native'
-let $GTAGSCONF = '/home/lex/gtags.conf'
+"let $GTAGSLABEL = 'native'
+let $GTAGSCONF = '/home/lex/.gtags.conf'
 
 Plugin 'ludovicchabant/vim-gutentags'
 
@@ -118,7 +118,7 @@ if !isdirectory(s:vim_tags)
 endif
 
 " 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazSl', '--extra=+q']
+let g:gutentags_ctags_extra_args = ['--fields=+niazSl', '--extras=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--fortran-kinds=+imv']
