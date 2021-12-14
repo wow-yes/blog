@@ -20,3 +20,7 @@ rm -rf ~/.cache
 ln -sf /dev/shm/ ~/.cache
 rm -rf ~/.adobe
 ln -sf /dev/shm/ ~/.adobe
+
+rm -rf ~/.snippets
+ln -sf $(pwd)/snippets ~/.snippets
+

@@ -81,12 +81,12 @@ let g:syntastic_enable_balloons = 1
 "}}}
 
 
-"符号索引 Plugin 'ludovicchabant/vim-gutentags' {{{
-"
+"符号索引 
+
+Plugin 'ludovicchabant/vim-gutentags' 
+
 "let $GTAGSLABEL = 'native'
 let $GTAGSCONF = '/home/lex/.gtags.conf'
-
-Plugin 'ludovicchabant/vim-gutentags'
 
 let g:gutentags_define_advanced_commands = 1
 
@@ -394,9 +394,10 @@ set dictionary+=./../../../words.dict
 
 set autochdir
 
-" 记住上次文件打开的位置
 if has("autocmd")
+    " 记住上次文件打开的位置
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufRead      *.py2,*.py3 set filetype=python
 endif
 
 
@@ -413,7 +414,6 @@ endfunc
 
 "+++++++++++++++++++++++++++ Python ++++++++++++++++++++++++++++++++++++++++++
 
-autocmd BufRead      *.py2,*.py3 set filetype=python
 
 """"""""""""""""""""""""For Markdown"""""""""""""""""""""""""""""""""""{{{
 func! Handler(channel, msg)
@@ -426,17 +426,6 @@ func!  MdIab()
     set cc=0
     set tw=0
     iab iday <c-r>=strftime("20%y年%m月%d日 %H:%M:%S")<cr>
-    iab ss <!--{{{-->
-    iab ee <!--}}}-->
-
-    iab bmtx \begin{bmatrix} \end{bmatrix}
-    iab sum <c-r>=strftime("\\sum^{}_{}")<cr><ESC>3h
-    iab inf <c-r>=strftime("\\infty^{}_{}")<cr><ESC>3h
-    iab fr <c-r>=strftime("\\frac{}{}")<cr><ESC>2h
-    iab ff <c-r>=strftime("\$f(x) = a_0 +
-                \\\sum^{\\infty}_{k=1} a_k \\cos(kx) + b_k \\sin(kx)\$"
-                \)<cr><ESC>
-    iab pbk <div STYLE="page-break-after: always;"></div>
 endfunc
 
 func! Md2Doc()
@@ -516,8 +505,6 @@ func! Main() abort
     map <F6> :call Md2Doc()<cr>
     map <F8> :call PrvHtm()<cr>
 
-
-
     let g:tagbar_type_markdown = {
             \ 'ctagstype' : 'markdown',
             \ 'deffile' :'markdown.ctags',
@@ -561,6 +548,7 @@ nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let s:extfname = expand("%:e")
 if s:extfname ==? "f90"
@@ -580,3 +568,10 @@ let fortran_have_tabs=1
 let fortran_do_enddo=1
 let fortran_fold=1
 let fortran_fold_conditionals=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Template 
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
+

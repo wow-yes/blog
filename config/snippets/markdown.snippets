@@ -1,0 +1,65 @@
+snippet head "BlogHead" b
+---
+layout : post
+title  : ${1:title}
+date   : strftime("20%y年%m月%d日 %H:%M:%S")
+categories: jekyll
+tags   : jekyll markdown
+excerpt: 此处写摘要
+mathjax: true
+toc    : true
+---
+$0
+endsnippet
+
+
+snippet gantt "Gantt" b
+\`\`\`mermaid
+gantt         
+    
+    dateFormat  H:m   
+    axisFormat  %H:%M
+
+    title 今日任务
+
+    section 关键任务
+        任务1    :     ,  21:00, 1h
+        任务2    : done,  20:00, 1h
+        %测试
+
+    section 任务2
+        renwu 1 : done, 21:00, 1h
+\`\`\`
+$0
+endsnippet
+
+
+snippet pbk "PageBreak"
+<div STYLE="page-break-after: always;"></div>
+$0
+endsnippet
+
+snippet frac "Mat_frac"
+\\frac{${1}}{${2}}
+$0
+endsnippet
+
+snippet inf "Math_inf"
+\\infty^{${1}}_{${2}}
+$0
+endsnippet
+
+snippet \sum "Math_inf"
+\\sum^{${1}}_{${2}}
+$0
+endsnippet
+
+
+snippet bmtx "Math_bmtx"
+\begin{bmatrix} 
+${1} &  ${2} &  ${3}  \\ 
+${4} &  ${5} &  ${6}   
+\end{bmatrix}
+$0
+endsnippet
+
