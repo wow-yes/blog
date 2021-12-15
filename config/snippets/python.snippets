@@ -1,5 +1,59 @@
-snippet mplot "matplotlib" b
-
+snippet head "matplotlib" b
+#!/usr/bin/env python3
+import matplotlib
+matplotlib.rcParams['agg.path.chunksize'] = 10000
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from scipy import signal
+import random, scipy
+import pandas as pd
 $0
 endsnippet
 
+
+snippet plotfig "matplotlib" b
+
+plt.rcParams['font.size'] = '10'
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.sans-serif'] = 'Arial'
+mm=1/25.4
+fig=plt.figure(
+        facecolor="0.8",
+        dpi=300,
+        figsize=[174*mm,174*mm],
+        #tight_layout=True,
+        #constrained_layout=True,
+        )
+
+ax=fig.subplots(3,2)
+
+lbs=['(a) ','(b) ','(c) ','(d) ','(e) ','(f) ']
+for i in range(0,3):
+    for j in range(0,2):
+        ax[i,j].text(0.82,0.96, lbs[i*2+j], ha='left', va='top', fontsize=9,
+                fontweight='bold', transform=ax[i,j].transAxes)
+
+# 绘制第一个图像
+ax[0,0].plot( , ,   color=col[0], label='Origin')
+#ax[0,0].set_ylim(,)
+#ax[0,0].set_yticks([])
+ax[0,0].set_ylabel('ylabel', labelpad=0)
+ax[0,0].text(0.25,0.05,  textC  ,size=8, color=col[3],  transform=ax.transAxes)
+ax[0,0].set_xlabel('xlabel', labelpad=0)
+
+#-----------------------------------------------------------------------------
+
+handles, labels = ax[0,0].get_legend_handles_labels()
+fig.legend(handles, labels,
+        ncol=6, loc='upper center',
+        #bbox_to_anchor= (0,0.8,0.8,0.2),
+        mode='expand', borderaxespad=0.2
+        )
+fig.subplots_adjust(left=0.08, right=0.98, 
+        top=0.95, bottom=0.08,
+        wspace=0.15, hspace=0.15)
+fig.savefig('', dpi=300)
+plt.close()
+
+$0
+endsnippet

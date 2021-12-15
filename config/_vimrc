@@ -398,6 +398,7 @@ if has("autocmd")
     " 记住上次文件打开的位置
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au BufRead      *.py2,*.py3 set filetype=python
+    au BufRead      *.snippets set filetype=snippets
 endif
 
 
