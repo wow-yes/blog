@@ -1,0 +1,23 @@
+snippet makemd "markdown makeifle" 
+all: docx html
+
+CC=pandoc
+
+OPTS1 = --self-contained \
+		--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML \
+		--wrap=preserve --columns=80 
+OPTS2 = -f markdown+east_asian_line_breaks+multiline_tables 
+OPTS3 = --metadata link-citations=true -M reference-section-title="参考文献" \
+		--csl=gps-solutions.csl \
+		--filter pandoc-citeproc  \
+		--bibliography=ref.bib  \
+		-N 
+
+docx: 
+	$(CC) $(OPTS1) $(OPTS2) $(OPTS3)  test.md test2.md -t docx -o test.docx
+html: 
+	$(CC) --mathjax $(OPTS2) $(OPTS3) test.md test2.md -t html -o test.html
+
+clean: 
+	rm -rf *.docx *.html
+endsnippet

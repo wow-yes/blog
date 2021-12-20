@@ -2,8 +2,8 @@ snippet head "BlogHead" b
 ---
 layout : post
 title  : ${1:title}
-date   : strftime("20%y年%m月%d日 %H:%M:%S")
-categories: jekyll
+date   : ${2:date}
+categories: ${3}
 tags   : jekyll markdown
 excerpt: 此处写摘要
 mathjax: true
@@ -21,6 +21,7 @@ gantt
     axisFormat  %H:%M
 
     title 今日任务
+	todayMarker off 
 
     section 关键任务
         任务1    :     ,  21:00, 1h
