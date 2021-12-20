@@ -1,7 +1,13 @@
 ---
-tags: Qt
-toc:true
+layout : post
+title  : Qt笔记
+date   : 2018-01-04
+tags   : Qt
+excerpt: 此处写摘要
+mathjax: true
+toc    : true
 ---
+
 
 ## 在已经打开的文件中切换
 
