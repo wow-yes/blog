@@ -1,10 +1,8 @@
 snippet head "BlogHead" b
 ---
-layout : post
-title  : ${1:title}
-date   : ${2:date}
-categories: ${3}
-tags   : jekyll markdown
+title  : ${1}
+date   : `date +%Y-%m-%d`
+tags   : 
 excerpt: 此处写摘要
 mathjax: true
 toc    : true
@@ -13,7 +11,7 @@ $0
 endsnippet
 
 
-snippet gantt "Gantt" b
+snippet gantt "Gantt" 
 \`\`\`mermaid
 gantt         
     
@@ -50,7 +48,7 @@ snippet inf "Math_inf"
 $0
 endsnippet
 
-snippet \sum "Math_inf"
+snippet sum "Math_inf"
 \\sum^{${1}}_{${2}}
 $0
 endsnippet
@@ -63,4 +61,12 @@ ${4} &  ${5} &  ${6}
 \end{bmatrix}
 $0
 endsnippet
+
+snippet tbl "Math_bmtx"
+|     |     |
+|-----|-----|
+|     |     |
+$0
+endsnippet
+
 

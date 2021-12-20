@@ -1,14 +1,48 @@
 ---
-layout : post
-title  : vim自定义代码补全库
+title  : Vim-snippets自定义补全代码
 tags   : Vim
-excerpt: 此处写摘要
+excerpt: 让vim一键打出组合拳
 mathjax: true
 toc    : true
 ---
 
-## 
+经常写代码的同学会发现，很多代码都是一个套路，比如博客里的Jekyll yaml文件头，
+Python画图里面的import 三大件，都是一些很套路的代码。因此，可以使用vim-snippets对他们进行分类整理，
+使用相应的标识来对应一些代码中的“官话，套话”。让Vim一次打出一套组合拳，甚至可以由此把代码的框架搭好，我们只管将部分补全即可。
 
+```VimL
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
+```
+
+上述代码添加到.vimrc当中，然后进行插件的安装。插件安装完了之后，`~/.snippets/`目录下可以存放一些自定义的snippets文件
+
+```
+snippet iday
+`date +%y-%m-%d\ %H:%M`.
+endsnippet
+```
+
+这样我打`iday`+`Tab`键，就会自动补全日期 21-12-20 22:30.
+
+下面是我制作的两个补全文件
+
+- [all.snippets](https://github.com/wow-yes/blog/blob/master/config/snippets/all.snippets)
+- [markdown.snippets](https://github.com/wow-yes/blog/blob/master/config/snippets/markdown.snippets)
+
+不同语言的补全要放在对应的文件内，比如我现在用到的几个
+
+```bash
+all.snippets #对所有文件都生效
+make.snippets # makefile
+markdown.snippets # 对markdown文件生效
+python.snippets # 对Python文件
+```
+
+不管多么长的代码，只要按规则放进去，就可以方便地打出来，这种自定义的感觉如同游戏中发出连招一样。
+
+当然，Vscode及其他IDE都有类似的功能，在此不再赘述。
 
 
 ## 参考资料 
