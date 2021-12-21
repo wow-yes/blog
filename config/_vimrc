@@ -1,13 +1,134 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-"==============================================================================
-"set rtp+=C:\Users\Lex\Desktop\gVimPortable\Data\settings\vimfiles\bundle\Vundle.vim
-"command insv:!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
+""设置标签tags
+"设置根据打开文件自动更换目录
+set tags=./.tags;,.tags
+"set autochdir
+
+syntax on		"设置语法高亮
+
+filetype on
+filetype plugin on
+filetype indent on	"自动检测文件类型并进行缩进高亮
+
+setlocal cinoptions=:4,g0,t0
+setlocal expandtab smarttab shiftwidth=4 softtabstop=4 tabstop=4
+
+"----------set 系列---------
+set sessionoptions+=unix,slash
+set fileformat=unix
+colorscheme desert
+set number      	    " 设置行号
+set foldenable
+set fdm=marker         " 设置折叠
+set foldmarker={{{,}}} " 折叠标志，这个是默认的
+set foldcolumn=2 " 折叠位宽
+if has('win32')
+    set guifont=Consolas:h14
+    "set guifont=Bitstream_Vera_Sans_Mono \12
+    "set gfw=KaiTi_GB2312:h12
+    "新細明體：PMingLiU
+    "細明體：MingLiU
+    "標楷體：DFKai-SB
+    "黑体：SimHei
+    "宋体：SimSun
+    "新宋体：NSimSun
+    "仿宋：FangSong
+    "楷体：KaiTi
+    "仿宋_GB2312：FangSong_GB2312
+    "楷体_GB2312：KaiTi_GB2312
+    "微軟正黑體：Microsoft JhengHei
+    "微软雅黑体：
+    "set gfw=Microsoft\ YaHei:h12
+    set gfw=SimHei:h14
+endif
+if has('unix')
+    set guifont=DejaVu\ Sans\ Mono\ 14 "Noto\ Mono\ Regular\ 14
+endif
+set nobomb
+set nocompatible	    " 避免以前版本的一些bug和局限
+set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936,chinese
+set encoding=utf-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+set backspace=2		    " 使backspace键可以删除
+set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行距离
+set formatoptions=tcrqn " 自动格式化
+set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
+set expandtab           " 用空格代替制表符
+set showmatch           " 显示匹配的括号
+set matchtime=5         " 匹配括号高亮的时间（单位是十分之一秒）
+set noignorecase          " 在搜索的时候忽略大小写
+set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+set hlsearch
+set novisualbell        " 不要闪烁
+set cursorline          " 高亮显示当前行
+set grepprg=grep\ -nH\ $*
+set autoread            " 设置当文件被改动时自动载入
+set autowrite           "自动保存
+set tabstop=4           "设置制表符宽度"
+set softtabstop=4
+set textwidth=80
+set fo+=tMm
+set cc=81
+set shiftwidth=4        "设置缩进的空格数"
+set nowrap                "设置自动断行
+set nobackup            "禁止生成备份文件"
+set noswapfile          "禁止生成swap文件"
+set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
+set shortmess-=S
+set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
+set shortmess=atI                                     "去掉欢迎界面
+" " 禁止显示菜单和工具条
+set guioptions-=m  "隐藏菜单栏"
+set guioptions-=T   "隐藏工具栏"
+set guioptions-=r
+set guioptions-=L
+
+set clipboard=unnamed "共享剪贴板
+vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
+
+set dictionary=$HOME/words
+
+
+iab iday <c-r>=strftime("20%y年%m月%d日 %H:%M:%S")<cr>
+
+if has("autocmd")
+    " 记住上次文件打开的位置
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufRead      *.py2,*.py3 set filetype=python
+    au BufRead      *.snippets set filetype=snippets
+    "au InsertLeave * silent! w
+    "autocmd BufWritePre *.* :%s/\s\+$//e
+endif
+
+"set makeprg=make\ -C\ ./gcc/\ -f\ makefile
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let s:extfname = expand("%:e")
+if s:extfname ==? "f90"
+    let fortran_free_source=1
+    unlet! fortran_fixed_source
+elseif s:extfname ==? "F90"
+    let fortran_free_source=1
+    unlet! fortran_fixed_source
+else
+    let fortran_fixed_source=1
+    unlet! fortran_free_source
+endif
+let fortran_more_precise=1
+"去掉固定格式每行开头的红色填充
+let fortran_have_tabs=1
+"允许折叠
+let fortran_do_enddo=1
+let fortran_fold=1
+let fortran_fold_conditionals=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command InsBundle :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 set rtp+=~/.vim/bundle/
 
-" ==============================================================================
-" 安装的所有插件
 call vundle#begin()
 
 " 必须安装，let Vundle manage Vundle, required
@@ -22,9 +143,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " 关闭状态显示空白符号计数,这个对我用处不大"
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
-"let g:airline#extensions#vimtex#wordcount = 0
-"let g:airline#extensions#wordcount#filetypes =['all']
-let g:airline#extensions#battery#enabled = 1
 let g:airline_detect_iminsert=0
 let g:airline_detect_spelllang=1
 let g:airline_detect_paste=1
@@ -34,35 +152,21 @@ let g:airline_statusline_ontop=0
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
-"autocmd VimEnter * NERDTree
-"wincmd w
-"autocmd VimEnter * wincmd w
 map <F2> :silent! NERDTreeToggle<CR>
 let NERDTreeWinPos="left"
 " 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心 "let NERDTreeAutoCenter=1
 " 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
-let NERDTreeMouseMode=2
-" 是否默认显示书签列表
-let NERDTreeShowBookmarks=1
-" 是否默认显示文件
-let NERDTreeShowFiles=1
-" 是否默认显示隐藏文件
-let NERDTreeShowHidden=0
-" 是否默认显示行号
-let NERDTreeShowLineNumbers=1
-" 窗口位置（'left' or 'right'）
-let NERDTreeWinPos='left'
-" 窗口宽
+let NERDTreeMouseMode=2 " 是否默认显示书签列表
+let NERDTreeShowBookmarks=1 " 是否默认显示文件
+let NERDTreeShowFiles=1 " 是否默认显示隐藏文件
+let NERDTreeShowHidden=0 " 是否默认显示行号
+let NERDTreeShowLineNumbers=1 " 窗口位置（'left' or 'right'）
+let NERDTreeWinPos='left' " 窗口宽
 let NERDTreeMinimalUI=1 "不显示帮助面板
 let NERDTreeDirArrows=0 "目录箭头 1 显示箭头  0传统+-|号
 let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.out$','\.log$']
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
-
-"Plugin 'vim-scripts/Vim-R-plugin'
-Plugin 'tomasr/molokai'
-let g:molokai_original = 1
-let g:rehash256 = 1
 
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_math = 1
@@ -71,20 +175,15 @@ let g:vim_markdown_folding_disabled = 1
 
 Plugin 'godlygeek/tabular'
 
-"快速查找
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'Yggdroot/LeaderF'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 
 "语法检查 
 Plugin 'vim-syntastic/syntastic'
-
 let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_cpp_include_dirs = ['/usr/include/']
-let g:syntastic_cpp_include_dirs = ['C:/Program Files/mingw-w64/x86_64-7.2.0-win32-seh-rt_v5-rev1/mingw64/x86_64-w64-mingw32/include']
 let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_cpp_check_header = 1
 "let g:syntastic_cpp_compiler = 'clang++'
@@ -97,19 +196,11 @@ Plugin 'ludovicchabant/vim-gutentags'
 
 "let $GTAGSLABEL = 'native'
 let $GTAGSCONF = '/home/lex/.gtags.conf'
-
 let g:gutentags_define_advanced_commands = 1
-
-""设置标签tags
-set tags=./.tags;,.tags
-"设置根据打开文件自动更换目录
-set autochdir
-
 " gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 " 所生成的数据文件的名称
 let g:gutentags_ctags_tagfile = '.tags'
-
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
 if executable('ctags')
@@ -128,7 +219,7 @@ if !isdirectory(s:vim_tags)
 endif
 
 " 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazSl', '--extras=+q']
+let g:gutentags_ctags_extra_args  = ['--fields=+niazSl', '--extras=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--fortran-kinds=+imv']
@@ -142,10 +233,8 @@ if g:ctags_version == "Universal"
   let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']
 endif
 
-" 禁用 gutentags 自动加载 gtags 数据库的行为
-let g:gutentags_auto_add_gtags_cscope = 1
-"Change focus to quickfix window after search (optional).
-let g:gutentags_plus_switch = 1
+let g:gutentags_auto_add_gtags_cscope = 1 " 禁用 gutentags 自动加载 gtags 数据库的行为
+let g:gutentags_plus_switch = 1 "Change focus to quickfix window after search (optional).
 "Enable advanced commands: GutentagsToggleTrace, etc.
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_trace = 0
@@ -210,16 +299,9 @@ if has("cscope")
 endif
 
 set completeopt=menu
-
-
 Plugin 'skywind3000/gutentags_plus'
-
-" enable gtags module
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-
-" config project root markers.
-let g:gutentags_project_root = ['.root']
-
+let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
+let g:gutentags_project_root = ['.root'] " config project root markers.
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
@@ -228,12 +310,6 @@ let g:tagbar_width=30                    "窗口宽度的设置
 let g:tagbar_autofocus=1
 map <F3> :Tagbar<CR>
 
-call vundle#end()            " required
-
-filetype plugin indent on    " required
-
-" CTags的设定
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let Tlist_Auto_Open=1
 let Tlist_Sort_Type = "name"    " 按照名称排序
 let Tlist_Use_Right_Window = 1  " 在右侧显示窗口
@@ -248,171 +324,9 @@ if has('win32')
 endif
 let tlist_make_settings  = 'make;m:makros;t:targets'
 
-"}}}
-
-" ==============================================================================
-" vundle命令
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-
-"}}}==============================================================================
-
-syntax on		"设置语法高亮
-"set rnu
-
-"------------------------------------------------------------------------------"
-"   一些普通性设置                                                             "
-"------------------------------------------------------------------------------"
-filetype on
-filetype plugin on
-filetype indent on	"自动检测文件类型并进行缩进高亮
-
-setlocal cinoptions=:4,g0,t0
-setlocal expandtab smarttab shiftwidth=4 softtabstop=4 tabstop=4
-
-"----------set 系列---------
-set sessionoptions+=unix,slash
-set fileformat=unix
-colorscheme desert
-set number      	    " 设置行号
-set foldenable
-set fdm=marker         " 设置折叠
-set foldmarker={{{,}}} " 折叠标志，这个是默认的
-set foldcolumn=2 " 折叠位宽
-if has('win32')
-    set guifont=Consolas:h14
-    "set guifont=Bitstream_Vera_Sans_Mono \12
-    "set gfw=KaiTi_GB2312:h12
-    "新細明體：PMingLiU
-    "細明體：MingLiU
-    "標楷體：DFKai-SB
-    "黑体：SimHei
-    "宋体：SimSun
-    "新宋体：NSimSun
-    "仿宋：FangSong
-    "楷体：KaiTi
-    "仿宋_GB2312：FangSong_GB2312
-    "楷体_GB2312：KaiTi_GB2312
-    "微軟正黑體：Microsoft JhengHei
-    "微软雅黑体：
-    "set gfw=Microsoft\ YaHei:h12
-    set gfw=SimHei:h14
-endif
-if has('unix')
-    set guifont=DejaVu\ Sans\ Mono\ 14
-    "set guifont=Noto\ Mono\ Regular\ 14
-endif
-set nobomb
-set nocompatible	    " 避免以前版本的一些bug和局限
-set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936,chinese
-set encoding=utf-8
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-set backspace=2		    " 使backspace键可以删除
-set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行距离
-set formatoptions=tcrqn " 自动格式化
-set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
-set expandtab           " 用空格代替制表符
-set showmatch           " 显示匹配的括号
-set matchtime=5         " 匹配括号高亮的时间（单位是十分之一秒）
-set noignorecase          " 在搜索的时候忽略大小写
-"set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
-set hlsearch
-set novisualbell        " 不要闪烁
-set cursorline          " 高亮显示当前行
-set grepprg=grep\ -nH\ $*
-set autoread            " 设置当文件被改动时自动载入
-set autowrite           "自动保存
-set tabstop=4           "设置制表符宽度"
-set softtabstop=4
-"set textwidth=10000000
-"set fo+=tMm
-set cc=80
-set shiftwidth=4        "设置缩进的空格数"
-set nowrap                "设置自动断行
-set nobackup            "禁止生成备份文件"
-set noswapfile          "禁止生成swap文件"
-set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
-set shortmess-=S
-set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
-set shortmess=atI                                     "去掉欢迎界面
-" " 禁止显示菜单和工具条
-set guioptions-=m  "隐藏菜单栏"
-set guioptions-=T   "隐藏工具栏"
-set guioptions-=r
-set guioptions-=L
-
-set clipboard=unnamed "共享剪贴板
-" Copy to X CLIPBOARD
-vmap cc :w !xsel -i -b<CR><CR>
-
-set dictionary=$HOME/words
-
-set autochdir
-
-iab iday <c-r>=strftime("20%y年%m月%d日 %H:%M:%S")<cr>
-
-if has("autocmd")
-    " 记住上次文件打开的位置
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    au BufRead      *.py2,*.py3 set filetype=python
-    au BufRead      *.snippets set filetype=snippets
-    "au InsertLeave * silent! w
-    "autocmd BufWritePre *.* :%s/\s\+$//e
-endif
-
-"set makeprg=make\ -C\ ./gcc/\ -f\ makefile
-
-"for cscope
-set cscopequickfix=s-,c-,d-,i-,t-,e-
-
-if has("cscope")
-    "set csprg=/usr/bin/cscope
-    set csto=1
-    set cst
-    set nocsverb
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    endif
-    set csverb
-endif
-
-nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let s:extfname = expand("%:e")
-if s:extfname ==? "f90"
-    let fortran_free_source=1
-    unlet! fortran_fixed_source
-elseif s:extfname ==? "F90"
-    let fortran_free_source=1
-    unlet! fortran_fixed_source
-else
-    let fortran_fixed_source=1
-    unlet! fortran_free_source
-endif
-let fortran_more_precise=1
-"去掉固定格式每行开头的红色填充
-let fortran_have_tabs=1
-"允许折叠
-let fortran_do_enddo=1
-let fortran_fold=1
-let fortran_fold_conditionals=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Template 
+"Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 
+call vundle#end()            " required
