@@ -148,6 +148,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " 关闭状态显示空白符号计数,这个对我用处不大"
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline_detect_iminsert=0
 let g:airline_detect_spelllang=1
 let g:airline_detect_paste=1
@@ -159,15 +160,12 @@ let g:airline_statusline_ontop=0
 "文件目录
 Plugin 'scrooloose/nerdtree'
 map <F2> :silent! NERDTreeToggle<CR>
-let NERDTreeWinPos="left"
-" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心 "let NERDTreeAutoCenter=1
-" 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
-let NERDTreeMouseMode=2 " 是否默认显示书签列表
-let NERDTreeShowBookmarks=1 " 是否默认显示文件
-let NERDTreeShowFiles=1 " 是否默认显示隐藏文件
-let NERDTreeShowHidden=0 " 是否默认显示行号
-let NERDTreeShowLineNumbers=1 " 窗口位置（'left' or 'right'）
-let NERDTreeWinPos='left' " 窗口宽
+let NERDTreeAutoCenter=1 " 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心 "
+let NERDTreeMouseMode=2 " 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
+let NERDTreeShowBookmarks=1 " 是否默认显示书签列表
+let NERDTreeShowFiles=1 " 是否默认显示文件
+let NERDTreeShowHidden=0 " 是否默认显示隐藏文件
+let NERDTreeShowLineNumbers=1 " 是否默认显示行号
 let NERDTreeMinimalUI=1 "不显示帮助面板
 let NERDTreeDirArrows=0 "目录箭头 1 显示箭头  0传统+-|号
 let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.out$','\.log$']
