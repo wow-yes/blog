@@ -3,13 +3,18 @@ snippet head "BlogHead" b
 title  : ${1}
 date   : `date +%Y-%m-%d`
 tags   : 
+categories : 
 excerpt: 此处写摘要
 mathjax: true
+published  : false
 toc    : true
 ---
 $0
 endsnippet
 
+snippet ino "TimeStamp No"
+`date +%y%m%d%H%M`
+endsnippet
 
 snippet gantt "Gantt" 
 \`\`\`mermaid
@@ -69,4 +74,16 @@ snippet tbl "Math_bmtx"
 $0
 endsnippet
 
+snippet zett "Zettelkasten"
+### `date +%y%m%d%H%M`${1}
 
+[目录](../)
+
+tags: 
+
+
+**[Reference:]**
+
+1. 
+
+endsnippet

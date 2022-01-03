@@ -15,7 +15,6 @@ setlocal cinoptions=:4,g0,t0
 setlocal expandtab smarttab shiftwidth=4 softtabstop=4 tabstop=4
 
 "----------set 系列---------
-colorscheme desert
 set sessionoptions+=unix,slash
 set fileformat=unix
 set number      	    " 设置行号
@@ -139,12 +138,15 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
 
+
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme="molokai"
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_show = 2
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#formatter = 'short_path'
 " 关闭状态显示空白符号计数,这个对我用处不大"
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
