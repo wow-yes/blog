@@ -136,7 +136,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme molokai
+colorscheme monokai
 
 
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
@@ -174,14 +174,26 @@ let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.ou
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
 
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_math = 1
 let g:vim_markdown_folding_level = 6
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
 
-Plugin 'godlygeek/tabular'
+"Plugin 'vim-pandoc/vim-pandoc'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
+"let g:tex_conceal='amgs'
+"let g:pandoc#spell#enabled=0
+"
+fun! SetMyTodos()
+    syn match myTodos /\%(TAGS:\)\|\%(TODO:\)/
+    hi link myTodos Tag
+endfu
+autocmd bufenter *.md :call SetMyTodos()
+autocmd filetype *.md :call SetMyTodos()
 
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 
@@ -338,3 +350,4 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
+
