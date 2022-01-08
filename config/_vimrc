@@ -136,8 +136,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme monokai
-
 
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
 Plugin 'vim-airline/vim-airline'
@@ -185,13 +183,6 @@ let g:vim_markdown_frontmatter = 1
 "Plugin 'vim-pandoc/vim-pandoc-syntax'
 "let g:tex_conceal='amgs'
 "let g:pandoc#spell#enabled=0
-"
-fun! SetMyTodos()
-    syn match myTodos /\%(TAGS:\)\|\%(TODO:\)/
-    hi link myTodos Tag
-endfu
-autocmd bufenter *.md :call SetMyTodos()
-autocmd filetype *.md :call SetMyTodos()
 
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
@@ -208,6 +199,39 @@ let g:syntastic_cpp_check_header = 1
 "let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
 "whether to show balloons
 let g:syntastic_enable_balloons = 1
+Plugin 'majutsushi/tagbar'
+let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
+let g:tagbar_width=30                    "窗口宽度的设置
+"let g:tagbar_vertical=30 "窗口宽度的设置
+let g:tagbar_autofocus=1
+map <F3> :Tagbar<CR>
+
+let Tlist_Auto_Open=1
+let Tlist_Sort_Type = "name"    " 按照名称排序
+let Tlist_Use_Right_Window = 1  " 在右侧显示窗口
+let Tlist_Compart_Format = 1    " 压缩方式
+let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer
+let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树
+let Tlist_Exit_OnlyWindow=1
+if has('win32')
+    let Tlist_Ctags_Cmd = 'ctags.exe'
+endif
+let tlist_make_settings  = 'make;m:makros;t:targets'
+
+"Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
+
+Plugin 'jiangmiao/auto-pairs'
+
+if (v:version < 800)
+    finish
+endif
+
+"""""Plugin version > 8 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "符号索引 
 Plugin 'ludovicchabant/vim-gutentags' 
@@ -321,33 +345,7 @@ Plugin 'skywind3000/gutentags_plus'
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
 
-Plugin 'majutsushi/tagbar'
-let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
-let g:tagbar_width=30                    "窗口宽度的设置
-"let g:tagbar_vertical=30 "窗口宽度的设置
-let g:tagbar_autofocus=1
-map <F3> :Tagbar<CR>
 
-let Tlist_Auto_Open=1
-let Tlist_Sort_Type = "name"    " 按照名称排序
-let Tlist_Use_Right_Window = 1  " 在右侧显示窗口
-let Tlist_Compart_Format = 1    " 压缩方式
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer
-let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags
-let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树
-let Tlist_Exit_OnlyWindow=1
-if has('win32')
-    let Tlist_Ctags_Cmd = 'ctags.exe'
-endif
-let tlist_make_settings  = 'make;m:makros;t:targets'
-
-"Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
-
-Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
 
