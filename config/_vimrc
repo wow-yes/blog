@@ -152,8 +152,8 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline_detect_iminsert=0
 let g:airline_detect_spelllang=1
 let g:airline_detect_paste=1
-let g:airline_section_c = '%F%m [%{wordcount().chars},%{wordcount().words}]'
-let g:airline_section_y = '(%l,%v)/%L|%p%%'
+let g:airline_section_c = '%F%m [%Y,%{wordcount().chars},%{wordcount().words}]'
+let g:airline_section_x = '(%l,%v)/%L|%p%%'
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline_statusline_ontop=0
 
