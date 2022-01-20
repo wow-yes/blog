@@ -21,14 +21,6 @@ sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 
-
-# install pip -U
-pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-pip3 install -U pip
-#https://pypi.tuna.tsinghua.edu.cn/simple
-pip3 install -U numpy matplotlib pandas ipython scipy tk cartopy
-#pip3 install -U keras tensorflow pydot sklearn pyforest
-
 sudo apt-get autoremove
 sudo apt-get clean
 
