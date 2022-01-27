@@ -1,22 +1,14 @@
-set nocompatible              " be iMproved, required
-
-""设置标签tags
-"设置根据打开文件自动更换目录
-set tags=./.tags;,.tags
-"set autochdir
-
 syntax on		"设置语法高亮
-
 filetype on
 filetype plugin on
 filetype indent on	"自动检测文件类型并进行缩进高亮
 
+"----------set 系列---------
 setlocal cinoptions=:4,g0,t0
 setlocal expandtab smarttab shiftwidth=4 softtabstop=4 tabstop=4
-
-"----------set 系列---------
 set sessionoptions+=unix,slash
 set fileformat=unix
+set autochdir "设置根据打开文件自动更换目录
 set number      	    " 设置行号
 set foldenable
 set fdm=marker         " 设置折叠
@@ -101,10 +93,7 @@ if has("autocmd")
     "autocmd BufWritePre *.* :%s/\s\+$//e
 endif
 
-"set makeprg=make\ -C\ ./gcc/\ -f\ makefile
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let s:extfname = expand("%:e")
 if s:extfname ==? "f90"
     let fortran_free_source=1
@@ -123,7 +112,6 @@ let fortran_have_tabs=1
 let fortran_do_enddo=1
 let fortran_fold=1
 let fortran_fold_conditionals=1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/
 command InsBundle :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
@@ -344,8 +332,6 @@ set completeopt=menu
 Plugin 'skywind3000/gutentags_plus'
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
-
-
 
 call vundle#end()            " required
 
