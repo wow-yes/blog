@@ -13,7 +13,7 @@ set number      	    " 设置行号
 set foldenable
 set fdm=marker         " 设置折叠
 set foldmarker={{{,}}} " 折叠标志，这个是默认的
-set foldcolumn=2 " 折叠位宽
+set foldcolumn=0       " 折叠位宽
 if has('win32')
     set guifont=Consolas:h14
     "set guifont=Bitstream_Vera_Sans_Mono \12
@@ -70,7 +70,7 @@ set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
 set shortmess-=S
 set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set shortmess=atI                                     "去掉欢迎界面
-" " 禁止显示菜单和工具条
+" 禁止显示菜单和工具条
 set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
@@ -81,8 +81,6 @@ vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
 
 set dictionary+=./words.txt   "设置字典，文本目录下的字典文件words.txt将被自动加载"
 set dictionary+=../../words.txt
-
-iab iday <c-r>=strftime("20%y年%m月%d日 %H:%M:%S")<cr>
 
 if has("autocmd")
     " 记住上次文件打开的位置
@@ -112,7 +110,7 @@ let fortran_have_tabs=1
 let fortran_do_enddo=1
 let fortran_fold=1
 let fortran_fold_conditionals=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/
 command InsBundle :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 
@@ -121,14 +119,9 @@ call vundle#begin()
 " 必须安装，let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tomasr/molokai'
-let g:molokai_original = 1
-let g:rehash256 = 1
-
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme="molokai"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 2
 let g:airline#extensions#tabline#show_buffers = 1
