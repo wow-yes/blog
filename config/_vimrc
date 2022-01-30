@@ -327,4 +327,7 @@ Plugin 'skywind3000/gutentags_plus'
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
 
+Plugin 'sickill/vim-monokai'
+colorscheme monokai
+
 call vundle#end()            " required
