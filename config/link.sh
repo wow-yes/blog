@@ -24,3 +24,6 @@ ln -sf /dev/shm/ ~/.adobe
 rm -rf ~/.snippets
 ln -sf $(pwd)/snippets ~/.snippets
 
+rm -rf ~/.tmux.conf
+ln -sf $(pwd)/tmux.conf ~/.tmux.conf
+

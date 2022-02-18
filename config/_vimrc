@@ -59,7 +59,7 @@ set autoread            " 设置当文件被改动时自动载入
 set autowrite           "自动保存
 set tabstop=4           "设置制表符宽度"
 set softtabstop=4
-set textwidth=80
+"set textwidth=80
 set fo+=tMm
 set cc=81
 set shiftwidth=4        "设置缩进的空格数"
@@ -133,10 +133,11 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline_detect_iminsert=0
 let g:airline_detect_spelllang=1
 let g:airline_detect_paste=1
-let g:airline_section_c = '%F%m [%Y,%{wordcount().chars},%{wordcount().words}]'
+let g:airline_section_c = '%F%m '
 let g:airline_section_x = '(%l,%v)/%L|%p%%'
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline_statusline_ontop=0
+let g:airline_theme='sol'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
@@ -327,7 +328,5 @@ Plugin 'skywind3000/gutentags_plus'
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
 
-Plugin 'sickill/vim-monokai'
-colorscheme monokai
 
 call vundle#end()            " required
