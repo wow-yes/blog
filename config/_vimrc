@@ -75,6 +75,7 @@ set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
 set guioptions-=L
+colorscheme desert
 
 set clipboard=unnamed "共享剪贴板
 vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
@@ -206,8 +207,6 @@ let tlist_make_settings  = 'make;m:makros;t:targets'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
-
-Plugin 'jiangmiao/auto-pairs'
 
 if (v:version < 800)
     finish
