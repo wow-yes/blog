@@ -15,7 +15,7 @@ sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
      tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev \
     htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global \
-    neofetch upower pciutils sshfs
+    neofetch upower pciutils sshfs tig
 
 #sudo apt-get install tcl-dev tk-dev
 
@@ -24,6 +24,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 sudo apt-get autoremove
 sudo apt-get clean
 
-ssh-keygen -C "lipengbo@msn.com"
+#ssh-keygen -C "lipengbo@msn.com"
 
 
