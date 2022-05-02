@@ -4,8 +4,6 @@ filetype plugin on
 filetype indent on	"自动检测文件类型并进行缩进高亮
 
 "----------set 系列---------
-setlocal cinoptions=:4,g0,t0
-setlocal expandtab smarttab shiftwidth=4 softtabstop=4 tabstop=4
 set sessionoptions+=unix,slash
 set fileformat=unix
 set autochdir "设置根据打开文件自动更换目录

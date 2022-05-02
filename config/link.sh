@@ -1,14 +1,17 @@
 pwd=`cd $(dirname $0);pwd -P`
 
-
-ln -fs $(pwd)/_vimrc ~/.vimrc
-ln -fs $(pwd)/gtags.conf ~/.gtags.conf
+rm -rf ~/.vimrc
+ln -s $(pwd)/_vimrc ~/.vimrc
+rm -rf ~/.gtags.conf
+ln -fs $(pwd)/gtags.conf  ~/.gtags.conf
+rm -rf ~/.bashrc
 ln -sf $(pwd)/bashrc ~/.bashrc
+rm -rf ~/.Xresources
 ln -sf $(pwd)/Xresources ~/.Xresources
 
 rm -rf ~/.desk.png
-rm -rf ~/.lock.png
 ln -sf $(pwd)/desk.png ~/.desk.png
+rm -rf ~/.lock.png
 ln -sf $(pwd)/lock.png ~/.lock.png
 
 rm -rf ~/.i3*
