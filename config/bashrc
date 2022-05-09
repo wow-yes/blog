@@ -149,7 +149,7 @@ alias md2a5report=" pandoc -s --pdf-engine=xelatex --highlight-style=tango -F pa
 alias pip3up="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip3 install -U"
 alias dos2unixall="find . -type f -exec dos2unix {} \;"
 alias unix2dosall="find . -type f -exec unix2dos {} \;"
-alias ctags='~/Projects/bins/bin/universal-ctags'
+#alias ctags='~/Projects/bins/bin/universal-ctags'
 
 cd() { builtin cd "$@" && ls -l; }
 alias du='du -h --max-depth=1'
@@ -168,7 +168,7 @@ PS1="\[\033[1;32m\]${debian_chroot:+($debian_chroot)}\u@\h:\w"
 PS1+="\[\033[1;36m\]\$(git_branch)"
 PS1+="\[\033[1;32m\]$ \[\e[0m\]"
 
-PATH=$PATH:/opt/bin/:~/.local/bin/:~/Projects/bins/bin/ctags
+PATH=$PATH:/opt/bin/:~/.local/bin/
 
 #set -o vi
 #. /usr/share/autojump/autojump.sh
