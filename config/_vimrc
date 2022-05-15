@@ -9,27 +9,12 @@ set fileformat=unix
 set autochdir "设置根据打开文件自动更换目录
 set number      	    " 设置行号
 set foldenable
-set fdm=indent          " 设置折叠
+"set fdm=indent          " 设置折叠
 set foldlevel=0
 set foldmarker={{{,}}} " 折叠标志，这个是默认的
 set foldcolumn=0       " 折叠位宽
 if has('win32')
     set guifont=Consolas:h14
-    "set guifont=Bitstream_Vera_Sans_Mono \12
-    "set gfw=KaiTi_GB2312:h12
-    "新細明體：PMingLiU
-    "細明體：MingLiU
-    "標楷體：DFKai-SB
-    "黑体：SimHei
-    "宋体：SimSun
-    "新宋体：NSimSun
-    "仿宋：FangSong
-    "楷体：KaiTi
-    "仿宋_GB2312：FangSong_GB2312
-    "楷体_GB2312：KaiTi_GB2312
-    "微軟正黑體：Microsoft JhengHei
-    "微软雅黑体：
-    "set gfw=Microsoft\ YaHei:h12
     set gfw=SimHei:h14
 endif
 if has('unix')
@@ -74,7 +59,61 @@ set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
 set guioptions-=L
-colorscheme desert
+
+colorscheme default
+
+hi Cursor         ctermfg=235    ctermbg=231     cterm=NONE           guifg=#272822   guibg=#f8f8f0   gui=NONE
+hi Visual         ctermfg=NONE   ctermbg=59      cterm=NONE           guifg=NONE      guibg=#49483e   gui=NONE
+hi CursorLine     ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
+hi CursorLineNr   ctermfg=208                    cterm=none
+hi CursorColumn   ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
+hi ColorColumn    ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
+hi LineNr         ctermfg=102    ctermbg=237     cterm=NONE           guifg=#90908a   guibg=#3c3d37   gui=NONE
+hi VertSplit      ctermfg=241    ctermbg=241     cterm=NONE           guifg=#64645e   guibg=#64645e   gui=NONE
+hi MatchParen     ctermfg=197    ctermbg=NONE    cterm=underline      guifg=#f92672   guibg=NONE      gui=underline
+hi StatusLine     ctermfg=231    ctermbg=241     cterm=bold           guifg=#f8f8f2   guibg=#64645e   gui=bold
+hi StatusLineNC   ctermfg=231    ctermbg=241     cterm=NONE           guifg=#f8f8f2   guibg=#64645e   gui=NONE
+hi Pmenu          ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=NONE      guibg=NONE      gui=NONE
+hi PmenuSel       ctermfg=NONE   ctermbg=59      cterm=NONE           guifg=NONE      guibg=#49483e   gui=NONE
+hi IncSearch      term=reverse   cterm=reverse   ctermfg=193          ctermbg=16      gui=reverse     guifg=#C4BE89      guibg=#000000
+hi Search         term=reverse   cterm=NONE      ctermfg=231          ctermbg=24      gui=NONE        guifg=#f8f8f2      guibg=#204a87
+hi Directory      ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
+hi Folded         ctermfg=242    ctermbg=235     cterm=NONE           guifg=#75715e   guibg=#272822   gui=NONE
+hi SignColumn     ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
+hi Normal         ctermfg=231    ctermbg=235     cterm=NONE           guifg=#f8f8f2   guibg=#272822   gui=NONE
+hi Boolean        ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
+hi Character      ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
+hi Comment        ctermfg=242    ctermbg=NONE    cterm=NONE           guifg=#75715e   guibg=NONE      gui=NONE
+hi Conditional    ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi Constant       ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=NONE      guibg=NONE      gui=NONE
+hi Define         ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi DiffAdd        ctermfg=231    ctermbg=64      cterm=bold           guifg=#f8f8f2   guibg=#46830c   gui=bold
+hi DiffDelete     ctermfg=88     ctermbg=NONE    cterm=NONE           guifg=#8b0807   guibg=NONE      gui=NONE
+hi DiffChange     ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=#f8f8f2   guibg=#243955   gui=NONE
+hi DiffText       ctermfg=231    ctermbg=24      cterm=bold           guifg=#f8f8f2   guibg=#204a87   gui=bold
+hi ErrorMsg       ctermfg=231    ctermbg=197     cterm=NONE           guifg=#f8f8f0   guibg=#f92672   gui=NONE
+hi WarningMsg     ctermfg=231    ctermbg=197     cterm=NONE           guifg=#f8f8f0   guibg=#f92672   gui=NONE
+hi Float          ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
+hi Function       ctermfg=148    ctermbg=NONE    cterm=NONE           guifg=#a6e22e   guibg=NONE      gui=NONE
+hi Identifier     ctermfg=81     ctermbg=NONE    cterm=NONE           guifg=#66d9ef   guibg=NONE      gui=italic
+hi Keyword        ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi Label          ctermfg=186    ctermbg=NONE    cterm=NONE           guifg=#e6db74   guibg=NONE      gui=NONE
+hi NonText        ctermfg=59     ctermbg=236     cterm=NONE           guifg=#49483e   guibg=#31322c   gui=NONE
+hi Number         ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
+hi Operator       ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi PreProc        ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi Special        ctermfg=231    ctermbg=NONE    cterm=NONE           guifg=#f8f8f2   guibg=NONE      gui=NONE
+hi SpecialCommen  ctermfg=242    ctermbg=NONE    cterm=NONE           guifg=#75715e   guibg=NONE      gui=NONE
+hi SpecialKey     ctermfg=59     ctermbg=237     cterm=NONE           guifg=#49483e   guibg=#3c3d37   gui=NONE
+hi Statement      ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi StorageClass   ctermfg=81     ctermbg=NONE    cterm=NONE           guifg=#66d9ef   guibg=NONE      gui=italic
+hi String         ctermfg=186    ctermbg=NONE    cterm=NONE           guifg=#e6db74   guibg=NONE      gui=NONE
+hi Repeat         ctermfg=161                    cterm=bold
+hi Tag            ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi Title          ctermfg=203    ctermbg=NONE    cterm=bold           guifg=#f8f8f2   guibg=NONE      gui=bold
+hi Todo           ctermfg=95     ctermbg=NONE    cterm=inverse,bold   guifg=#75715e   guibg=NONE      gui=inverse,bold
+hi Type           ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
+hi Underlined     ctermfg=244    ctermbg=NONE    cterm=underline      guifg=NONE      guibg=NONE      gui=underline
 
 set clipboard=unnamed "共享剪贴板
 vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
@@ -88,7 +127,6 @@ if has("autocmd")
     au BufRead      *.py2,*.py3 set filetype=python
     au BufRead      *.snippets set filetype=snippets
     au InsertLeave * silent! w
-    "autocmd BufWritePre *.* :%s/\s\+$//e
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,21 +204,10 @@ let g:vim_markdown_frontmatter = 1
 "let g:tex_conceal='amgs'
 "let g:pandoc#spell#enabled=0
 
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 
-"语法检查 
-Plugin 'vim-syntastic/syntastic'
-let g:syntastic_check_on_open=1
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_cpp_include_dirs = ['/usr/include/']
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
-"whether to show balloons
-let g:syntastic_enable_balloons = 1
 Plugin 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
 let g:tagbar_width=30                    "窗口宽度的设置
@@ -208,6 +235,25 @@ Plugin 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 
 if (v:version < 800)
+    "语法检查 
+    Plugin 'vim-syntastic/syntastic'
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    "let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_check_on_open=1
+    "let g:syntastic_always_populate_loc_list=1
+    let g:syntastic_cpp_include_dirs = ['/usr/include/']
+    let g:syntastic_cpp_remove_include_errors = 1
+    let g:syntastic_cpp_check_header = 1
+    "let g:syntastic_cpp_compiler = 'clang++'
+    "let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+    "whether to show balloons
+    let g:syntastic_enable_balloons = 1
+    
     finish
 endif
 
@@ -242,18 +288,18 @@ if !isdirectory(s:vim_tags)
 endif
 
 " 配置 ctags 的参数
-let g:gutentags_ctags_extra_args  = ['--fields=+niazSl', '--extras=+q']
+let g:gutentags_ctags_extra_args  = ['--fields=+niazSl']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--fortran-kinds=+imv']
-let g:gutentags_ctags_extra_args += ['--markdown-kinds=+cs']
 
 " Get ctags version
 let g:ctags_version = system('ctags --version')[0:8]
 
 " 如果使用 universal ctags 需要增加下面一行
 if g:ctags_version == "Universal"
-  let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']
+    let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']
+    let g:gutentags_ctags_extra_args += ['--markdown-kinds=+cs']
 endif
 
 let g:gutentags_auto_add_gtags_cscope = 1 " 禁用 gutentags 自动加载 gtags 数据库的行为
@@ -303,8 +349,6 @@ if has("cscope")
         nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 
         nmap <C-F12> :cs add cscope.out<CR>
-        "F12用ctags生成tags
-        nmap <F12> :!ctags -R --c++-kinds=+p --fields=+ialS --extra=+q -f .tags<CR>
         "--language-force=C++
         nmap <S-F12> :!cscope -Rbkq<CR>
         " cscope参数
@@ -326,5 +370,12 @@ Plugin 'skywind3000/gutentags_plus'
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
 
+Plugin 'dense-analysis/ale'
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_loclist = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 1
 
 call vundle#end()            " required
