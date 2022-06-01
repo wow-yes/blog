@@ -46,7 +46,7 @@ set softtabstop=4
 "set textwidth=80
 "set fo+=tMm
 "set cc=81
-set wrap                "设置自动断行
+set nowrap                "设置自动断行
 set shiftwidth=4        "设置缩进的空格数"
 set nobackup            "禁止生成备份文件"
 set noswapfile          "禁止生成swap文件"
@@ -59,6 +59,8 @@ set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
 set guioptions-=L
+
+map <F4> :set wrap!<CR>
 
 colorscheme default
 
@@ -126,7 +128,7 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au BufRead      *.py2,*.py3 set filetype=python
     au BufRead      *.snippets set filetype=snippets
-    au InsertLeave * silent! w
+    "au InsertLeave * silent! w  " 放弃了，太慢了
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -374,8 +376,17 @@ Plugin 'dense-analysis/ale'
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_loclist = 1
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 1
+let g:ale_set_loclist = 0
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+let g:ale_lint_on_text_changed='never' "文件内容发生变化时不检查
+let g:ale_lint_on_enter = 0  "打开文件时不检查
+
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+"let g:ale_linters = {
+"\   'c++': ['clang'],
+"\   'c': ['clang'],
+"\   'python': ['pyflakes'],
+"\}
 
 call vundle#end()            " required
