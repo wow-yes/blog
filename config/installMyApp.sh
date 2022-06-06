@@ -1,4 +1,5 @@
 #sudo cp sources.list /etc/apt/sources.list
+sudo sed -i 's/archive.ubuntu/mirrors.aliyun/'  /etc/apt/sources.list
 
 sudo apt-get clean
 sudo apt-get update
@@ -15,7 +16,8 @@ sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
      tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev \
     htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global \
-    neofetch upower pciutils sshfs tig 
+    upower pciutils sshfs tig  universal-ctags
+#neofetch 
 
 sudo apt-get install tcl-dev tk-dev
 
