@@ -151,13 +151,13 @@ alias dos2unixall="find . -type f -exec dos2unix {} \;"
 alias unix2dosall="find . -type f -exec unix2dos {} \;"
 #alias ctags='~/Projects/bins/bin/universal-ctags'
 
+
 cd() { builtin cd "$@" && ls -l; }
 alias du='du -h --max-depth=1'
 
 # Install Ruby Gems to ~/gems' >> ~/.bashrc
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
-
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
@@ -172,4 +172,17 @@ PATH=$PATH:/opt/bin/:~/.local/bin/:/usr/local/lib
 
 #set -o vi
 #. /usr/share/autojump/autojump.sh
+
+
+# alias for ftp
+
+alias ftpEpn=" ftp -a ftp.epncb.oma.be:/pub/data/format/ "
+alias ftpEsa=" ftp -a gssc.esa.int                       "
+alias ftpHkc=" ftp -a ftp.geodetic.gov.hk                "
+alias ftpIgn=" ftp -a igs.ign.fr                         "
+alias ftpUnv=" ftp -a data-out.unavco.org                "
+alias ftpWhu=" ftp -a igs.gnsswhu.cn                     "
+alias ftpBkg=" ftp -a igs.bkg.bund.de                    "
+alias ftpAus=" ftp -a ftp.ga.gov.au                      "
+
 

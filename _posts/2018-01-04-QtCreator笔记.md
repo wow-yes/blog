@@ -90,13 +90,13 @@ QtCreator4.2.0, debian testing)，第二种方法在程序编译后，也已经�
 .pro文件中添加
 
 ```makefile
-QMAKE_CFLAGS += -Wno-unused-but-set-variable #你的参数
+QMAKE_CFLAGS += -Wno-unused-but-set-variable 
 ```
 
 当你的项目是C++语言程序时，应当在.pro文件中添加
 
 ```makefile
-QMAKE_CXXFLAGS += -Wno-unused-but-set-variable #你的参数
+QMAKE_CXXFLAGS += -Wno-unused-but-set-variable 
 ```
 
 ## Qt Creator: During startup program exited with code

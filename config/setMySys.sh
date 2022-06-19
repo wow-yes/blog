@@ -16,7 +16,7 @@ sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
      tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev \
     htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global \
-    upower pciutils sshfs tig  universal-ctags unzip
+    upower pciutils sshfs tig  universal-ctags unzip transmission-daemon transmission-cli
 #neofetch 
 
 sudo apt-get install tcl-dev tk-dev
