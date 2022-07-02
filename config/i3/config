@@ -91,7 +91,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal &
+bindsym $mod+Return exec --no-startup-id lxterminal&
 
 # kill focused window
 bindsym $mod+q kill
@@ -261,8 +261,8 @@ bindsym $mod+o scratchpad show
 bar {
         strip_workspace_numbers no
         #output            LVDS1
-        #status_command     i3blocks
-        status_command     i3status
+        status_command     i3blocks
+        #status_command     i3status
         position           bottom
         #mode hide
         hidden_state hide
