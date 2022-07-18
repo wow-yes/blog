@@ -41,7 +41,7 @@ pips="\
 #pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ ;\n\
 pip3 config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple/ ;\n\
 pip3 install -U pip ;\n\
-pip3 install -U numpy matplotlib pandas ipython scipy tk cartopy ;\n\
+pip3 install -U numpy matplotlib pandas ipython scipy tk cartopy pygments;\n\
 pip3 install -U keras tensorflow-gpu pydot sklearn pyforest geopandas ;\n\
 "
 
