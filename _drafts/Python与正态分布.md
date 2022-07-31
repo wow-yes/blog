@@ -24,7 +24,6 @@ toc    : true
 
 - [Shapely用户手册 — Shapely 1.7a2 文档](https://www.osgeo.cn/shapely/manual.html#polygons)
 - [python - Finding intersection between ellipse and a line - Stack Overflow](https://stackoverflow.com/questions/18326900/finding-intersection-between-ellipse-and-a-line)
-
 - [python - Matplotlib Patches - Circle appears to be an Ellipse - Stack Overflow](https://stackoverflow.com/questions/60448644/matplotlib-patches-circle-appears-to-be-an-ellipse)
 - [python - How to properly draw hexagons with offset coordinates? - Stack Overflow](https://stackoverflow.com/questions/59042139/how-to-properly-draw-hexagons-with-offset-coordinates)
 
