@@ -53,8 +53,7 @@ set noswapfile          "禁止生成swap文件"
 set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
 set shortmess-=S
 set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
-set shortmess=atI                                     "去掉欢迎界面
-" 禁止显示菜单和工具条
+set shortmess=atI                                     "去掉欢迎界面 " 禁止显示菜单和工具条
 set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
@@ -159,6 +158,8 @@ if empty(glob($HOME."/.vim/bundle"))
     finish
 endif
 
+colorscheme desert
+
 call vundle#begin()
 
 " 必须安装，let Vundle manage Vundle, required
@@ -182,7 +183,7 @@ let g:airline_section_c = '%F%m '
 let g:airline_section_x = '(%l,%v)/%L|%p%%'
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline_statusline_ontop=0
-let g:airline_theme='sol'
+let g:airline_theme='molokai'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
@@ -409,8 +410,8 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "\   'python': ['pyflakes'],
 "\}
 "
-Plugin 'sickill/vim-monokai'
+"Plugin 'sickill/vim-monokai'
+"Plugin 'tomasr/molokai'
 
-colorscheme monokai 
 
 call vundle#end()            " required

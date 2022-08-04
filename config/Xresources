@@ -1,4 +1,5 @@
 UXTerm*locale: true
+UXTerm*termName: xterm-256color
 UXTerm*utf8Title: true
 UXTerm*fontMenu*fontdefault*Label: Default
 UXTerm*xftAntialias: true
@@ -18,6 +19,7 @@ UXTerm*SaveLines: 3000
 UXTerm*VT100*translations: #override \n\
 
 XTerm*locale: true
+XTerm*termName: xterm-256color
 XTerm*utf8Title: true
 XTerm*fontMenu*fontdefault*Label: Default
 XTerm*xftAntialias: true
@@ -34,13 +36,10 @@ XTerm*cjkWidth: false
 XTerm*background: #2E2F30
 XTerm*foreground: white
 XTerm*SaveLines: 3000
+XTerm*selectToClipboard: true
 XTerm*VT100*translations: #override \n\
-
-!*scrollBar: true
-!*rightScrollBar: true
-!*jumpScroll: true
-Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
-~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
-~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
-
+    ~Shift~Ctrl <Btn2Up>: insert-selection(PRIMARY,   CUT_BUFFER0) \n\
+     Shift~Ctrl <Btn2Up>: insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+    ~Shift      <BtnUp> : select-end(PRIMARY,   CUT_BUFFER0) \n\
+     Shift      <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1)
+    
