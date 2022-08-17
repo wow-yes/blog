@@ -17,3 +17,5 @@
 [user]
 	email = lipengbo@msn.com
 	name = lipengbo
+[safe]
+	directory = /mnt/data/HKCORS/RTKLIB_b34
