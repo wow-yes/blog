@@ -159,7 +159,6 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-
 # switch to workspace
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace next
@@ -183,8 +182,8 @@ bindsym $mod+Shift+4 move container to workspace "4:文件管理   "
 #
 bindsym $mod+5 workspace                         "5:网络网页   "
 bindsym $mod+Shift+5 move container to workspace "5:网络网页   "
-#assign [class="Firefox"]                         "5:网络网页   "
-#assign [class="Filezilla"]                       "5:网络网页   "
+assign [class="firefox"]                         "5:网络网页   "
+assign [class="Filezilla"]                       "5:网络网页   "
 
 # move focused container to workspace
 bindsym $mod+6 workspace                         "6:           "
