@@ -11,6 +11,7 @@ sudo apt-get autoclean; \
 "
 
 gits=[
+"git config --global init.defaultBranch main         ;",
 "git config --global color.ui true                   ;",
 "git config --global core.quotepath false            ;",
 "git config --global gui.encoding utf-8              ;",
@@ -23,9 +24,14 @@ gits=[
 "git config --global user.name  \"lipengbo\"         ;",
 "git config --global core.editor vim                 ;"]
 
+flpk= "\
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
+        flatpak install org.mozilla.firefox org.zotero.Zotero com.zettlr.Zettlr
+        "
+
 guis="\
-sudo apt-get install i3-wm i3lock-fancy redshift-gtk  firefox pcmanfm \
-    lxappearance lxterminal gnome-disk-utility flameshot nomacs \
+sudo apt-get install i3-wm i3lock-fancy redshift-gtk pcmanfm \
+    flatpak lxappearance lxterminal gnome-disk-utility flameshot nomacs \
     simplescreenrecorder smplayer bleachbit gparted i3status \
     i3blocks blueman rofi  lxappearance nomacs pcmanfm"
 
@@ -42,7 +48,7 @@ pips="\
 pip3 config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple/ ;\n\
 pip3 install -U pip ;\n\
 pip3 install -U numpy matplotlib pandas ipython scipy tk cartopy pygments;\n\
-pip3 install -U keras tensorflow-gpu pydot sklearn pyforest geopandas ;\n\
+pip3 install -U keras tensorflow-gpu pydot sklearn pyforest geopandas memory_profiler;\n\
 "
 
 def setConfig():

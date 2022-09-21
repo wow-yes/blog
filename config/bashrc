@@ -121,7 +121,7 @@ PATH=$PATH:/opt/bnc/
 
 alias   q="exit"
 alias   c="clear"
-alias   ls="ls -h --color --time-style '+%Y/%m/%d %H:%M:%S'"
+#alias   ls="ls -h --color --time-style '+%Y/%m/%d %H:%M:%S'"
 alias commit="git commit -a -m "
 alias push="git push origin master"
 alias   up="sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove "
@@ -158,13 +158,15 @@ alias du='du -h --max-depth=1'
 # Install Ruby Gems to ~/gems' >> ~/.bashrc
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+export HISTCONTROL=erasedups
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
     echo "("${ref#refs/heads/}") ";
 }
 
-PS1="\[\033[1;32m\]${debian_chroot:+($debian_chroot)}\u@\h:\w"
+PS1=""
+PS1+="\[\033[1;32m\]${debian_chroot:+($debian_chroot)}\u@\h:\w"
 PS1+="\[\033[1;36m\]\$(git_branch)"
 PS1+="\[\033[1;32m\]$ \[\e[0m\]"
 
