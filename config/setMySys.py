@@ -33,7 +33,7 @@ guis="\
 sudo apt-get install i3-wm i3lock-fancy redshift-gtk pcmanfm \
     flatpak lxappearance lxterminal gnome-disk-utility flameshot nomacs \
     simplescreenrecorder smplayer bleachbit gparted i3status \
-    i3blocks blueman rofi  lxappearance nomacs pcmanfm"
+    i3blocks blueman rofi  lxappearance nitrogen pcmanfm"
 
 clis="\
 sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
