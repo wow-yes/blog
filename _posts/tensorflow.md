@@ -38,3 +38,36 @@ https://tensorflow.google.cn/guide/data?hl=zh_cn#batching_tensors_with_padding
 [Migrate TensorBoard: TensorFlow's visualization toolkit  |  TensorFlow Core](https://tensorflow.google.cn/guide/migrate/tensorboard)
 [Get started with TensorBoard  |  TensorFlow](https://tensorflow.google.cn/tensorboard/get_started)
 
+
+
+## LearningRateScheduler
+
+经验表明，刚开始训练的时候，学习率可以大一点；随着训练的进行，学习率可以逐步降低。这样做主要是为了防止出现局部伪最优。
+
+在训练中后期，过大的LR可能导致模型在最优解附近震荡，无法快速收敛。
+
+因此，可以根据学习的历元数量来逐步降低学习率。
+
+keras.callbacks提供了LearningRateScheduler函数。使用方式如下：
+
+- class CosineDecay: A LearningRateSchedule that uses a cosine decay schedule.
+- class CosineDecayRestarts: A LearningRateSchedule that uses a cosine decay schedule with restarts.
+- class ExponentialDecay: A LearningRateSchedule that uses an exponential decay schedule.
+- class InverseTimeDecay: A LearningRateSchedule that uses an inverse time decay schedule.
+- class LearningRateSchedule: The learning rate schedule base class.
+- class PiecewiseConstantDecay: A LearningRateSchedule that uses a piecewise constant decay schedule.
+- class PolynomialDecay: A LearningRateSchedule that uses a polynomial decay schedule.
+
+- [TensorFlow.Keras Learning rate schedule - 知乎](https://zhuanlan.zhihu.com/p/416446400)
+- [Learning Rate Schedule：CNN学习率调整策略 - 知乎](https://zhuanlan.zhihu.com/p/410971793)
+
+## has no attribute
+
+这个问题，一般是版本号问题导致的。
+
+tensorflow, Keras, 和Cudnn的版本号一定要对应。
+
+keras和tensorflow内置的keras混用导致冲突。
+
+[cuda和tensorflow的版本对应关系\_捌椒的博客-CSDN博客](https://blog.csdn.net/qq_40926887/article/details/123900382)
+
