@@ -25,7 +25,7 @@ XTerm*fontMenu*fontdefault*Label: Default
 XTerm*xftAntialias: true
 XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 XTerm*faceNameDoublesize: WenQuanyi Micro Hei Mono:antialias=True:pixelsize=16
-XTerm*faceSize: 16
+XTerm*faceSize:  16
 XTerm*faceSize1: 16
 XTerm*faceSize2: 16
 XTerm*faceSize3: 16
