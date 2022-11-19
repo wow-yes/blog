@@ -25,13 +25,12 @@ gits=[
 "git config --global core.editor vim                 ;"]
 
 flpk= "\
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;
-        flatpak install org.mozilla.firefox org.zotero.Zotero com.zettlr.Zettlr
-        "
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;\
+        flatpak install org.mozilla.firefox org.zotero.Zotero com.zettlr.Zettlr"
 
 guis="\
 sudo apt-get install i3-wm i3lock-fancy redshift-gtk pcmanfm \
-    flatpak lxappearance lxterminal gnome-disk-utility flameshot nomacs \
+    flatpak lxappearance lxterminal gnome-disk-utility flameshot \
     simplescreenrecorder smplayer bleachbit gparted i3status \
     i3blocks blueman rofi  lxappearance nitrogen pcmanfm"
 
@@ -66,11 +65,12 @@ def setConfig():
 
 
     for ln in lnlist:
-        cmd='ln -sf %s/%s ~/.%s '%(pwd,ln,ln)
+        cmd='rm -rf ~/.%s; ln -sf %s/%s ~/.%s '%(ln,pwd,ln,ln)
         print(cmd)
         os.system(cmd)
 
-#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
+    cmd = "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
+    os.system(cmd)
 
 def printhelp():
     print("setMySys help \n",
