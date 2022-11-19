@@ -183,7 +183,7 @@ let g:airline_section_c = '%F%m '
 let g:airline_section_x = '(%l,%v)/%L|%p%%'
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline_statusline_ontop=0
-let g:airline_theme='molokai'
+let g:airline_theme='dark_minimal'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
