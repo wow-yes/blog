@@ -152,7 +152,7 @@ alias unix2dosall="find . -type f -exec unix2dos {} \;"
 #alias ctags='~/Projects/bins/bin/universal-ctags'
 
 
-cd() { builtin cd "$@" && ls -l; }
+cd() { builtin cd "$@" && ls -ltrha; }
 alias du='du -h --max-depth=1'
 
 # Install Ruby Gems to ~/gems' >> ~/.bashrc
