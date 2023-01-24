@@ -16,6 +16,7 @@ UXTerm*cjkWidth: false
 UXTerm*background: #2E2F30
 UXTerm*foreground: white
 UXTerm*SaveLines: 3000
+UXTerm*selectToClipboard: true
 UXTerm*VT100*translations: #override \n\
 
 XTerm*locale: true
