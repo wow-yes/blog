@@ -21,5 +21,6 @@
 	directory = /mnt/data/HKCORS/RTKLIB_b34
 	directory = /mnt/data/HKCORS/pyhktk
 	directory = /mnt/data/xh/py
+	directory = /mnt/data/xh/confs
 [init]
 	defaultBranch = main

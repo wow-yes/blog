@@ -43,7 +43,7 @@ bindsym $mod+l    exec --no-startup-id i3lock -c 333333&
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # force floating for all new windows
 #for_window [class="[.]*"] floating enable
-floating_minimum_size 1000 x 800
+#floating_minimum_size 1000 x 800
 for_window [title="qtcreator_process_stub"] floating enable
 for_window [title="MathJax Equation Source - Mozilla Firefox"] floating enable
 #for_window [title="~ - VIFM"] floating enable
