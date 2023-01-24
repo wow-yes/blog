@@ -167,7 +167,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 2
 let g:airline#extensions#tabline#show_buffers = 1
@@ -183,7 +182,7 @@ let g:airline_section_c = '%F%m '
 let g:airline_section_x = '(%l,%v)/%L|%p%%'
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline_statusline_ontop=0
-let g:airline_theme='dark_minimal'
+"let g:airline_theme='dark_minimal'
 
 "文件目录
 Plugin 'scrooloose/nerdtree'
@@ -238,7 +237,7 @@ endif
 let tlist_make_settings  = 'make;m:makros;t:targets'
 
 "Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 
@@ -412,6 +411,7 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "
 "Plugin 'sickill/vim-monokai'
 "Plugin 'tomasr/molokai'
+colorscheme monokai
 
 
 call vundle#end()            " required
