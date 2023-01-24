@@ -178,11 +178,11 @@ PATH=$PATH:/opt/bin/:~/.local/bin/:/usr/local/lib
 
 # alias for ftp
 
-alias ftpEpn=" ftp -a ftp.epncb.oma.be:/pub/data/format/ "
-alias ftpEsa=" ftp -a gssc.esa.int                       "
-alias ftpHkc=" ftp -a ftp.geodetic.gov.hk                "
-alias ftpIgn=" ftp -a igs.ign.fr                         "
-alias ftpUnv=" ftp -a data-out.unavco.org                "
-alias ftpWhu=" ftp -a igs.gnsswhu.cn                     "
-alias ftpBkg=" ftp -a igs.bkg.bund.de                    "
-alias ftpAus=" ftp -a ftp.ga.gov.au                      "
+alias ftpEpn="lftp -e \"set ftp:ssl-allow yes\"   ftp.epncb.oma.be:/pub/data/format/ "
+alias ftpEsa="lftp -e \"set ftp:ssl-allow yes\"   gssc.esa.int                       "
+alias ftpHkc="lftp -e \"set ftp:ssl-allow yes\"   ftp.geodetic.gov.hk                "
+alias ftpIgn="lftp -e \"set ftp:ssl-allow yes\"   igs.ign.fr                         "
+alias ftpUnv="lftp -e \"set ftp:ssl-allow yes\"   data-out.unavco.org                "
+alias ftpWhu="lftp -e \"set ftp:ssl-allow yes\"   igs.gnsswhu.cn                     "
+alias ftpBkg="lftp -e \"set ftp:ssl-allow yes\"   igs.bkg.bund.de                    "
+alias ftpAus="lftp -e \"set ftp:ssl-allow yes\"   ftp.ga.gov.au                      "

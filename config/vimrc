@@ -412,7 +412,8 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "
 "Plugin 'sickill/vim-monokai'
 "Plugin 'tomasr/molokai'
-colorscheme monokai
+Plugin 'morhetz/gruvbox'
 
 
 call vundle#end()            " required
+colorscheme gruvbox
