@@ -13,8 +13,8 @@ UXTerm*faceSize4: 16
 UXTerm*faceSize5: 16
 UXTerm*faceSize6: 16
 UXTerm*cjkWidth: false
-UXTerm*background: #2E2F30
-UXTerm*foreground: white
+#UXTerm*background: #2E2F30
+#UXTerm*foreground: white
 UXTerm*SaveLines: 3000
 UXTerm*selectToClipboard: true
 UXTerm*VT100*translations: #override \n\
@@ -34,8 +34,8 @@ XTerm*faceSize4: 16
 XTerm*faceSize5: 16
 XTerm*faceSize6: 16
 XTerm*cjkWidth: false
-XTerm*background: #2E2F30
-XTerm*foreground: white
+#XTerm*background: #2E2F30
+#XTerm*foreground: white
 XTerm*SaveLines: 3000
 XTerm*selectToClipboard: true
 XTerm*VT100*translations: #override \n\

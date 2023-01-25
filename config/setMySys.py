@@ -73,6 +73,9 @@ def setConfig():
     cmd = "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
     os.system(cmd)
 
+    cmd = "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+    os.system(cmd)
+
 def printhelp():
     print("setMySys help \n",
     "-soft : set software mirros \n",  
