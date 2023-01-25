@@ -35,7 +35,7 @@ sudo apt-get install i3-wm i3lock-fancy redshift-gtk pcmanfm \
     i3blocks blueman rofi  lxappearance nitrogen pcmanfm"
 
 clis="\
-sudo apt-get install vim git gcc build-essential gfortran gdb python3 \
+sudo apt-get install vim git git-lfs gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc pandoc-citeproc tmux wget axel \
      tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev xcompmgr \
     htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global cscope dos2unix trash-cli\
