@@ -11,6 +11,7 @@ sudo apt-get autoclean; \
 "
 
 gits=[
+"git lfs install         ;",
 "git config --global init.defaultBranch main         ;",
 "git config --global color.ui true                   ;",
 "git config --global core.quotepath false            ;",
