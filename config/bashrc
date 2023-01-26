@@ -159,6 +159,9 @@ alias du='du -h --max-depth=1'
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export HISTCONTROL=erasedups
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
@@ -178,11 +181,14 @@ PATH=$PATH:/opt/bin/:~/.local/bin/:/usr/local/lib
 
 # alias for ftp
 
-alias ftpEpn="lftp -e \"set ftp:ssl-allow yes\"   ftp.epncb.oma.be:/pub/data/format/ "
-alias ftpEsa="lftp -e \"set ftp:ssl-allow yes\"   gssc.esa.int                       "
-alias ftpHkc="lftp -e \"set ftp:ssl-allow yes\"   ftp.geodetic.gov.hk                "
-alias ftpIgn="lftp -e \"set ftp:ssl-allow yes\"   igs.ign.fr                         "
-alias ftpUnv="lftp -e \"set ftp:ssl-allow yes\"   data-out.unavco.org                "
-alias ftpWhu="lftp -e \"set ftp:ssl-allow yes\"   igs.gnsswhu.cn                     "
-alias ftpBkg="lftp -e \"set ftp:ssl-allow yes\"   igs.bkg.bund.de                    "
-alias ftpAus="lftp -e \"set ftp:ssl-allow yes\"   ftp.ga.gov.au                      "
+alias ftpEpn="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   ftp.epncb.oma.be:/pub/data/format/ "
+alias ftpEsa="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   gssc.esa.int                       "
+alias ftpHkc="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes;set ssl:verify-certificate no\"   ftp.geodetic.gov.hk                "
+alias ftpIgn="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   igs.ign.fr                         "
+alias ftpUnv="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   data-out.unavco.org                "
+alias ftpWhu="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   igs.gnsswhu.cn                     "
+alias ftpBkg="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   igs-ftp.bkg.bund.de                    "
+alias ftpAus="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   ftp.ga.gov.au                      "
+alias ftpNas="lftp -u anonymous,passwd -e \"set ftp:ssl-force yes\"   gdc.cddis.eosdis.nasa.gov          "
+
+
