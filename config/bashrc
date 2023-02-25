@@ -152,7 +152,7 @@ alias unix2dosall="find . -type f -exec unix2dos {} \;"
 #alias ctags='~/Projects/bins/bin/universal-ctags'
 
 
-cd() { builtin cd "$@" && ls -ltrha; }
+#cd() { builtin cd "$@" && ls -ltrha; }
 alias du='du -h --max-depth=1'
 
 # Install Ruby Gems to ~/gems' >> ~/.bashrc
@@ -174,6 +174,7 @@ PS1+="\[\033[1;36m\]\$(git_branch)"
 PS1+="\[\033[1;32m\]$ \[\e[0m\]"
 
 PATH=$PATH:/opt/bin/:~/.local/bin/:/usr/local/lib
+PATH=${PATH}:/usr/local/nvidia/bin:/usr/local/cuda/bin
 
 #set -o vi
 #. /usr/share/autojump/autojump.sh

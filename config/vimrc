@@ -126,7 +126,8 @@ if has("autocmd")
     " 记住上次文件打开的位置
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au BufRead      *.py2,*.py3 set filetype=python
-    au BufRead      *.snippets set filetype=snippets
+    au BufRead      *.sh        set filetype=bash
+    au BufRead      *.snippets  set filetype=snippets
     "au InsertLeave * silent! w  " 放弃了，太慢了
 endif
 
@@ -237,7 +238,7 @@ endif
 let tlist_make_settings  = 'make;m:makros;t:targets'
 
 "Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 

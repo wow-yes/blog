@@ -18,10 +18,7 @@
 	email = lipengbo@msn.com
 	name = lipengbo
 [safe]
-	directory = /mnt/data/HKCORS/RTKLIB_b34
-	directory = /mnt/data/HKCORS/pyhktk
-	directory = /mnt/data/xh/py
-	directory = /mnt/data/xh/confs
+	directory = *
 [init]
 	defaultBranch = main
 [filter "lfs"]
