@@ -26,7 +26,7 @@ gits=[
 "git config --global core.editor vim                 ;"]
 
 flpk= "\
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo;\
+        flatpak remote-add --if-not-exists flathub https://mirrors.sjtu.edu.cn/flathub;\
         flatpak install org.mozilla.firefox org.zotero.Zotero com.zettlr.Zettlr"
 
 guis="\
