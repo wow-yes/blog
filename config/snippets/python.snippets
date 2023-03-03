@@ -8,15 +8,16 @@ import matplotlib.pyplot as plt
 from scipy import signal
 import random, scipy
 import pandas as pd
-import os,sys
+import os,sys,pdb,time
 $0
 endsnippet
 
 snippet tensorflow "tensorflow" b
 #!/usr/bin/env python3
-import os,sys
+import os,sys,pdb,time
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  #设置为空
 import tensorflow as tf
+tf.random.set_seed(0)  # Important
 
 maxRAM=10240 #显卡最大使用显存
 gpus = tf.config.experimental.list_physical_devices('GPU')

@@ -200,8 +200,8 @@ let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.ou
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'  "markdown 插件
+Plugin 'preservim/vim-markdown'
 let g:vim_markdown_math = 1
 let g:vim_markdown_folding_level = 6
 let g:vim_markdown_folding_disabled = 1
@@ -410,8 +410,6 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "\   'python': ['pyflakes'],
 "\}
 "
-"Plugin 'sickill/vim-monokai'
-"Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
 
 
