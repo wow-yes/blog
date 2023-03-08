@@ -61,10 +61,6 @@ set guioptions-=L
 "setlocal spell spelllang=en_us,de_de,cjk
 set nospell
 
-"set statusline "状态栏默认设置
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set laststatus=2"显示状态栏
-
 map <F4> :set wrap!<CR>
 
 set clipboard=unnamed "共享剪贴板
@@ -102,87 +98,78 @@ let fortran_do_enddo=1
 let fortran_fold=1
 let fortran_fold_conditionals=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/
-command InsBundle :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
+command InsPlug :! curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 
-if empty(glob($HOME."/.vim/bundle"))
-    echo 'No Bundle, Try InsBundle'
-    finish
-endif
-
-call vundle#begin()
-
-" 必须安装，let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-"airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
-"Plugin 'vim-airline/vim-airline'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#buffer_nr_show = 2
-"let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#formatter = 'short_path'
-"" 关闭状态显示空白符号计数,这个对我用处不大"
-"let g:airline#extensions#whitespace#enabled = 0
-"let g:airline#extensions#whitespace#symbol = '!'
-"let g:airline#extensions#wordcount#enabled = 0
-"let g:airline_detect_iminsert=0
-"let g:airline_detect_spelllang=0
-"let g:airline_detect_paste=1
-"let g:airline_section_c = '%F%m '
-"let g:airline_section_x = '(%l,%v)/%L|%p%%'
-"let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
-"let g:airline_statusline_ontop=0
-"let g:airline_theme='dark_minimal'
+call plug#begin()
 
 "文件目录
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 map <F2> :silent! NERDTreeToggle<CR>
-let NERDTreeAutoCenter=1 " 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心 "
-let NERDTreeMouseMode=2 " 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
-let NERDTreeShowBookmarks=1 " 是否默认显示书签列表
-let NERDTreeShowFiles=1 " 是否默认显示文件
-let NERDTreeShowHidden=0 " 是否默认显示隐藏文件
+let NERDTreeAutoCenter=1      " 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心 "
+let NERDTreeMouseMode=2       " 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
+let NERDTreeShowBookmarks=1   " 是否默认显示书签列表
+let NERDTreeShowFiles=1       " 是否默认显示文件
+let NERDTreeShowHidden=0      " 是否默认显示隐藏文件
 let NERDTreeShowLineNumbers=1 " 是否默认显示行号
-let NERDTreeMinimalUI=1 "不显示帮助面板
-let NERDTreeDirArrows=0 "目录箭头 1 显示箭头  0传统+-|号
+let NERDTreeMinimalUI=1       " 不显示帮助面板
+let NERDTreeDirArrows=0       " 目录箭头 1 显示箭头  0传统+-|号
 let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.out$','\.log$']
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
 
-Plugin 'godlygeek/tabular'  "markdown 插件
-Plugin 'preservim/vim-markdown'
-let g:vim_markdown_math = 1
-let g:vim_markdown_folding_level = 6
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
+Plug 'godlygeek/tabular'  
+"
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+let g:pandoc#spell#enabled=0
+let g:pandoc#modules#disabled = ["formatting", "folding", "bibliographies", "completion", "metadata", "menu", "executors", "keyboard", "toc", "spell", "hypertext"]
 
-"Plugin 'vim-pandoc/vim-pandoc'
-"Plugin 'vim-pandoc/vim-pandoc-syntax'
-"let g:tex_conceal='amgs'
-"let g:pandoc#spell#enabled=0
+"Plug 'preservim/vim-markdown'
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_folding_level = 6
+"let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_frontmatter = 1
+"let g:tex_conceal = ""
+"let g:vim_markdown_conceal = 0
 
-Plugin 'dstein64/vim-startuptime'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mileszs/ack.vim'
-Plugin 'itchyny/lightline.vim'
 
-Plugin 'majutsushi/tagbar'
+
+Plug 'dstein64/vim-startuptime'
+Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+"Plug 'mileszs/ack.vim'
+
+Plug 'itchyny/lightline.vim'
+set laststatus=2 "显示状态栏
+set noshowmode " 状态栏下面不在单独显示模式
+
+" 配置lightline主题 let 就是定义了一个全局变量
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified'] ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \ },
+    \ }
+
+Plug 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
 let g:tagbar_width=30                    "窗口宽度的设置
 "let g:tagbar_vertical=30 "窗口宽度的设置
 let g:tagbar_autofocus=1
 map <F3> :Tagbar<CR>
-
 let Tlist_Auto_Open=1
-let Tlist_Sort_Type = "name"    " 按照名称排序
-let Tlist_Use_Right_Window = 1  " 在右侧显示窗口
-let Tlist_Compart_Format = 1    " 压缩方式
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer
-let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags
-let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树
+let Tlist_Use_Right_Window = 1     " 在右侧显示窗口
+let Tlist_Compart_Format = 1       " 压缩方式
+let Tlist_Show_One_File = 1        " 不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exist_OnlyWindow = 1     " 如果只有一个buffer，kill窗口也kill掉buffer
+let Tlist_File_Fold_Auto_Close = 0 " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column = 0   " 不要显示折叠树
 let Tlist_Exit_OnlyWindow=1
 if has('win32')
     let Tlist_Ctags_Cmd = 'ctags.exe'
@@ -190,13 +177,13 @@ endif
 let tlist_make_settings  = 'make;m:makros;t:targets'
 
 "Template""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.snippets/']
 
 if (v:version < 800)
     "语法检查 
-    Plugin 'vim-syntastic/syntastic'
+    Plug 'vim-syntastic/syntastic'
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
@@ -217,13 +204,12 @@ if (v:version < 800)
     finish
 endif
 
-"""""Plugin version > 8 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""Plug version > 8 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "符号索引 
-Plugin 'ludovicchabant/vim-gutentags' 
+Plug 'ludovicchabant/vim-gutentags' 
 
-let $GTAGSLABEL = 'native-pygments'
-"let $GTAGSLABEL = 'native'
+let $GTAGSLABEL = 'native-pygments' " 'native'
 let $GTAGSCONF = expand('~/.gtags.conf')
 "let g:gutentags_ctags_executable = expand('~/Projects/bins/bin/universal-ctags')
 let g:gutentags_define_advanced_commands = 1
@@ -340,8 +326,8 @@ if has("cscope")
     endif
 endif
 
-Plugin 'Yggdroot/indentLine'
-Plugin 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
@@ -387,13 +373,8 @@ let g:Lf_CursorBlink =1
 
 
 set completeopt=menu
-"Plugin 'skywind3000/gutentags_plus'
-"let g:gutentags_modules = ['ctags', 'gtags_cscope'] " enable gtags module
-"let g:gutentags_project_root = ['.root'] " config project root markers.
 
-Plugin 'dense-analysis/ale'
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
+Plug 'dense-analysis/ale'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_loclist = 0
 let g:ale_open_list = 0
@@ -408,9 +389,9 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "\   'python': ['pyflakes'],
 "\}
 "
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
-call vundle#end()            " required
+call plug#end()            " required
 colorscheme gruvbox
 set bg=dark
 
