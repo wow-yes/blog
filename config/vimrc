@@ -45,7 +45,7 @@ set tabstop=4           "设置制表符宽度"
 set softtabstop=4
 "set textwidth=80
 "set fo+=tMm
-"set cc=81
+set cc=81
 set nowrap                "设置自动断行
 set shiftwidth=4        "设置缩进的空格数"
 set nobackup            "禁止生成备份文件"
@@ -58,69 +58,20 @@ set guioptions-=m  "隐藏菜单栏"
 set guioptions-=T   "隐藏工具栏"
 set guioptions-=r
 set guioptions-=L
+"setlocal spell spelllang=en_us,de_de,cjk
+set nospell
+
+"set statusline "状态栏默认设置
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2"显示状态栏
 
 map <F4> :set wrap!<CR>
-"
-" colorscheme 
-"
-"hi Cursor         ctermfg=235    ctermbg=231     cterm=NONE           guifg=#272822   guibg=#f8f8f0   gui=NONE
-"hi Visual         ctermfg=NONE   ctermbg=59      cterm=NONE           guifg=NONE      guibg=#49483e   gui=NONE
-"hi CursorLine     ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
-"hi CursorLineNr   ctermfg=208                    cterm=none
-"hi CursorColumn   ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
-"hi ColorColumn    ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
-"hi LineNr         ctermfg=102    ctermbg=237     cterm=NONE           guifg=#90908a   guibg=#3c3d37   gui=NONE
-"hi VertSplit      ctermfg=241    ctermbg=241     cterm=NONE           guifg=#64645e   guibg=#64645e   gui=NONE
-"hi MatchParen     ctermfg=197    ctermbg=NONE    cterm=underline      guifg=#f92672   guibg=NONE      gui=underline
-"hi StatusLine     ctermfg=231    ctermbg=241     cterm=bold           guifg=#f8f8f2   guibg=#64645e   gui=bold
-"hi StatusLineNC   ctermfg=231    ctermbg=241     cterm=NONE           guifg=#f8f8f2   guibg=#64645e   gui=NONE
-"hi Pmenu          ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=NONE      guibg=NONE      gui=NONE
-"hi PmenuSel       ctermfg=NONE   ctermbg=59      cterm=NONE           guifg=NONE      guibg=#49483e   gui=NONE
-"hi IncSearch      term=reverse   cterm=reverse   ctermfg=193          ctermbg=16      gui=reverse     guifg=#C4BE89      guibg=#000000
-"hi Search         term=reverse   cterm=NONE      ctermfg=231          ctermbg=24      gui=NONE        guifg=#f8f8f2      guibg=#204a87
-"hi Directory      ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
-"hi Folded         ctermfg=242    ctermbg=235     cterm=NONE           guifg=#75715e   guibg=#272822   gui=NONE
-"hi SignColumn     ctermfg=NONE   ctermbg=237     cterm=NONE           guifg=NONE      guibg=#3c3d37   gui=NONE
-"hi Normal         ctermfg=231    ctermbg=235     cterm=NONE           guifg=#f8f8f2   guibg=#272822   gui=NONE
-"hi Boolean        ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
-"hi Character      ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
-"hi Comment        ctermfg=242    ctermbg=NONE    cterm=NONE           guifg=#75715e   guibg=NONE      gui=NONE
-"hi Conditional    ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi Constant       ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=NONE      guibg=NONE      gui=NONE
-"hi Define         ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi DiffAdd        ctermfg=231    ctermbg=64      cterm=bold           guifg=#f8f8f2   guibg=#46830c   gui=bold
-"hi DiffDelete     ctermfg=88     ctermbg=NONE    cterm=NONE           guifg=#8b0807   guibg=NONE      gui=NONE
-"hi DiffChange     ctermfg=NONE   ctermbg=NONE    cterm=NONE           guifg=#f8f8f2   guibg=#243955   gui=NONE
-"hi DiffText       ctermfg=231    ctermbg=24      cterm=bold           guifg=#f8f8f2   guibg=#204a87   gui=bold
-"hi ErrorMsg       ctermfg=231    ctermbg=197     cterm=NONE           guifg=#f8f8f0   guibg=#f92672   gui=NONE
-"hi WarningMsg     ctermfg=231    ctermbg=197     cterm=NONE           guifg=#f8f8f0   guibg=#f92672   gui=NONE
-"hi Float          ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
-"hi Function       ctermfg=148    ctermbg=NONE    cterm=NONE           guifg=#a6e22e   guibg=NONE      gui=NONE
-"hi Identifier     ctermfg=81     ctermbg=NONE    cterm=NONE           guifg=#66d9ef   guibg=NONE      gui=italic
-"hi Keyword        ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi Label          ctermfg=186    ctermbg=NONE    cterm=NONE           guifg=#e6db74   guibg=NONE      gui=NONE
-"hi NonText        ctermfg=59     ctermbg=236     cterm=NONE           guifg=#49483e   guibg=#31322c   gui=NONE
-"hi Number         ctermfg=141    ctermbg=NONE    cterm=NONE           guifg=#ae81ff   guibg=NONE      gui=NONE
-"hi Operator       ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi PreProc        ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi Special        ctermfg=231    ctermbg=NONE    cterm=NONE           guifg=#f8f8f2   guibg=NONE      gui=NONE
-"hi SpecialCommen  ctermfg=242    ctermbg=NONE    cterm=NONE           guifg=#75715e   guibg=NONE      gui=NONE
-"hi SpecialKey     ctermfg=59     ctermbg=237     cterm=NONE           guifg=#49483e   guibg=#3c3d37   gui=NONE
-"hi Statement      ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi StorageClass   ctermfg=81     ctermbg=NONE    cterm=NONE           guifg=#66d9ef   guibg=NONE      gui=italic
-"hi String         ctermfg=186    ctermbg=NONE    cterm=NONE           guifg=#e6db74   guibg=NONE      gui=NONE
-"hi Repeat         ctermfg=161                    cterm=bold
-"hi Tag            ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi Title          ctermfg=203    ctermbg=NONE    cterm=bold           guifg=#f8f8f2   guibg=NONE      gui=bold
-"hi Todo           ctermfg=95     ctermbg=NONE    cterm=inverse,bold   guifg=#75715e   guibg=NONE      gui=inverse,bold
-"hi Type           ctermfg=197    ctermbg=NONE    cterm=NONE           guifg=#f92672   guibg=NONE      gui=NONE
-"hi Underlined     ctermfg=244    ctermbg=NONE    cterm=underline      guifg=NONE      guibg=NONE      gui=underline
-"
+
 set clipboard=unnamed "共享剪贴板
 vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
 
-set dictionary+=./words.txt   "设置字典，文本目录下的字典文件words.txt将被自动加载"
-set dictionary+=../../words.txt
+"set dictionary+=./words.txt   "设置字典，文本目录下的字典文件words.txt将被自动加载"
+"set dictionary+=../../words.txt
 
 if has("autocmd")
     " 记住上次文件打开的位置
@@ -159,30 +110,28 @@ if empty(glob($HOME."/.vim/bundle"))
     finish
 endif
 
-colorscheme desert
-
 call vundle#begin()
 
 " 必须安装，let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 "airline 状态栏相关的设置[包括文件路径、文件类型、坐标、所占比例、时间等]
-Plugin 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 2
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#formatter = 'short_path'
-" 关闭状态显示空白符号计数,这个对我用处不大"
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#whitespace#symbol = '!'
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline_detect_iminsert=0
-let g:airline_detect_spelllang=1
-let g:airline_detect_paste=1
-let g:airline_section_c = '%F%m '
-let g:airline_section_x = '(%l,%v)/%L|%p%%'
-let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
-let g:airline_statusline_ontop=0
+"Plugin 'vim-airline/vim-airline'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 2
+"let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#formatter = 'short_path'
+"" 关闭状态显示空白符号计数,这个对我用处不大"
+"let g:airline#extensions#whitespace#enabled = 0
+"let g:airline#extensions#whitespace#symbol = '!'
+"let g:airline#extensions#wordcount#enabled = 0
+"let g:airline_detect_iminsert=0
+"let g:airline_detect_spelllang=0
+"let g:airline_detect_paste=1
+"let g:airline_section_c = '%F%m '
+"let g:airline_section_x = '(%l,%v)/%L|%p%%'
+"let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
+"let g:airline_statusline_ontop=0
 "let g:airline_theme='dark_minimal'
 
 "文件目录
@@ -212,9 +161,12 @@ let g:vim_markdown_frontmatter = 1
 "let g:tex_conceal='amgs'
 "let g:pandoc#spell#enabled=0
 
+Plugin 'dstein64/vim-startuptime'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
+Plugin 'itchyny/lightline.vim'
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
@@ -458,6 +410,7 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "
 Plugin 'morhetz/gruvbox'
 
-
 call vundle#end()            " required
 colorscheme gruvbox
+set bg=dark
+
