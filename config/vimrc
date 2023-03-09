@@ -99,7 +99,11 @@ let fortran_fold=1
 let fortran_fold_conditionals=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command InsPlug :! curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
+
+if empty(glob($HOME."/.vim/plugged"))
+    echo 'No Bundle, Try InsBundle'
+    finish
+endif
 
 call plug#begin()
 
@@ -119,11 +123,11 @@ let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
 
 Plug 'godlygeek/tabular'  
-"
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 let g:pandoc#spell#enabled=0
-let g:pandoc#modules#disabled = ["formatting", "folding", "bibliographies", "completion", "metadata", "menu", "executors", "keyboard", "toc", "spell", "hypertext"]
+let g:tex_conceal=''
+let g:pandoc#biblio#use_bibtool=1
 
 "Plug 'preservim/vim-markdown'
 "let g:vim_markdown_math = 1
@@ -132,8 +136,6 @@ let g:pandoc#modules#disabled = ["formatting", "folding", "bibliographies", "com
 "let g:vim_markdown_frontmatter = 1
 "let g:tex_conceal = ""
 "let g:vim_markdown_conceal = 0
-
-
 
 Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-fugitive'
