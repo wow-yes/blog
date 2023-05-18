@@ -57,7 +57,7 @@ for_window [class="netease-cloud-music" instance="netease-cloud-music"] floating
 for_window [class="Zotero" instance="Zotero"] floating disable
 for_window [class="mathpix-snipping-tool" instance="Mathpix Snipping Tool"] floating enable
 for_window [class="xpad" instance="xpad"] floating enable
-for_window [class="matplotlib" instance="matplotlib"] floating enable, resize set 1200 1000
+for_window [class="matplotlib" instance="matplotlib"] floating enable, resize set 600 600
 #for_window [class="matplotlib" instance="matplotlib"] floating disable
 for_window [class="Tk" instance="tk"] floating enable
 for_window [class="Arandr" instance="arandr"] floating enable
@@ -177,12 +177,12 @@ assign [class="Foxit Reader"]                    "3:资料"
 
 bindsym $mod+4 workspace                         "4:文件"
 bindsym $mod+Shift+4 move container to workspace "4:文件"
-assign [class="Thunar"]                          "4:文件"
+#assign [class="Thunar"]                          "4:文件"
 
 bindsym $mod+5 workspace                         "5:网络"
 bindsym $mod+Shift+5 move container to workspace "5:网络"
-assign [class="firefox"]                         "5:网络"
-assign [class="Filezilla"]                       "5:网络"
+#assign [class="firefox"]                         "5:网络"
+#assign [class="Filezilla"]                       "5:网络"
 
 # move focused container to workspace
 bindsym $mod+6 workspace                         "6:    "

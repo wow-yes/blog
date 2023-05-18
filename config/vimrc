@@ -121,6 +121,7 @@ let NERDTreeDirArrows=0       " 目录箭头 1 显示箭头  0传统+-|号
 let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.out$','\.log$']
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
+au VimEnter *  NERDTree
 
 Plug 'godlygeek/tabular'  
 Plug 'vim-pandoc/vim-pandoc'
@@ -130,7 +131,7 @@ let g:tex_conceal=''
 let g:pandoc#biblio#use_bibtool=1
 let g:pandoc#syntax#conceal#use=0
 let g:pandoc#syntax#codeblocks#embeds#langs = ["python","c","cpp", "bash=sh"]
-let g:pandoc#folding#level=2
+let g:pandoc#folding#level=10
 
 Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-fugitive'
@@ -387,6 +388,7 @@ let g:ale_lint_on_enter = 0  "打开文件时不检查
 "\}
 "
 Plug 'morhetz/gruvbox'
+
 
 call plug#end()            " required
 colorscheme gruvbox
