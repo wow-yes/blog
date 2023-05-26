@@ -62,6 +62,8 @@ set guioptions-=L
 set nospell
 
 map <F4> :set wrap!<CR>
+noremap cf :e <cfile><cr>
+noremap df :silent call system("rm -f ".expand("<cfile>"))<cr>
 
 set clipboard=unnamed "共享剪贴板
 vmap cc :w !xsel -i -b<CR><CR> " Copy to X CLIPBOARD
@@ -121,7 +123,6 @@ let NERDTreeDirArrows=0       " 目录箭头 1 显示箭头  0传统+-|号
 let NERDTreeIgnore=['\.mod$','\.html$','\tags$','\.toc$','\.aux$','\.pdf$','\.out$','\.log$']
 let NERDTree_Exit_OnlyWindow=1
 let NERDTreeWinSize=25
-au VimEnter *  NERDTree
 
 Plug 'godlygeek/tabular'  
 Plug 'vim-pandoc/vim-pandoc'
