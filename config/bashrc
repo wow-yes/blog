@@ -193,3 +193,8 @@ alias ftpAus="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   ftp.ga.gov
 alias ftpNas="lftp -u anonymous,passwd -e \"set ftp:ssl-force yes\"   gdc.cddis.eosdis.nasa.gov          "
 
 
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
