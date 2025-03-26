@@ -79,10 +79,10 @@ def setConfig():
         print(cmd)
         os.system(cmd)
 
-    cmd = "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
+    cmd = "rm -rf ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
     os.system(cmd)
 
-    cmd = "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+    cmd = "rm -rf ~/.tmux/plugins/tpm; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
     os.system(cmd)
 
 def printhelp():
