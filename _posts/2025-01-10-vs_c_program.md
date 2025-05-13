@@ -1,6 +1,6 @@
 ---
 title     : Visual Studio 的C语言支持很糟糕
-tags      : c/c++, C#, python
+tags      :
 mathjax   : true
 published : true
 toc       : true
