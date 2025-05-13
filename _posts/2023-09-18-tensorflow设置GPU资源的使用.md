@@ -1,6 +1,6 @@
 ---
 created: 2023-08-24T16:33:41 (UTC +08:00)
-tags: [tensorflow2.0能自动调动gpu吗]
+tags: 机器学习
 source: https://blog.csdn.net/qq_36758914/article/details/107152997
 author: 成就一亿技术人!
 ---
