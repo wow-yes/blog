@@ -266,7 +266,7 @@ plugins:
 
 relative_links:
     enabled:     true
-    collections: false
+    collections: true
 
 collections:
   read:
