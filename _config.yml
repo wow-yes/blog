@@ -157,10 +157,6 @@ pageview:
 search:
   provider: default # "default" (default), false, "google", "custom"
 
-  ## Google Custom Search Engine
-  google:
-    custom_search_engine_id: # Google Custom Search Engine ID
-
 
 ## => Analytics
 ##############################
@@ -274,8 +270,6 @@ collections:
   math:
     output: true
   soft:
-    output: true
-  projs:
     output: true
   mach:  # 机器学习
     output: true
