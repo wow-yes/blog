@@ -269,6 +269,7 @@ collections:
     output: true
   math:
     output: true
+    permalink: /math/:path/
   soft:
     output: true
   mach:  # 机器学习
