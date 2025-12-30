@@ -3,4 +3,4 @@ gem sources --remove https://rubygems.org/  # Remove default source
 gem sources -a https://mirrors.aliyun.com/rubygems/ # Add Aliyun mirror source
 sudo gem install jekyll bundler
 bundle install
-bundle exec jekyll serve
+bundle exec jekyll serve  --host 0.0.0.0 --port 4000
