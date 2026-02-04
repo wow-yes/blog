@@ -151,8 +151,7 @@ alias du='du --max-depth=1'
 export GEM_HOME="$HOME/.gems"
 export PATH="$HOME/.gems/bin:$PATH"
 export HISTCONTROL=erasedups
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
 
 # alias for ftp
 alias ftpEpn="lftp -u anonymous,passwd -e \"set ftp:ssl-allow yes\"   ftp.epncb.oma.be:/pub/data/format/ "
@@ -201,9 +200,9 @@ PS1+="\[\033[1;32m\]$: \[\e[0m\]"
 
 
 #CUDNN_PATH=$(dirname $(python3 -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.pyenv/versions/3.10.12/envs/py310/lib/python3.10/site-packages/nvidia/cudnn/lib/
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.pyenv/versions/3.10.12/envs/py310/lib/python3.10/site-packages/tensorrt_libs/
-export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/lib/cuda
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.pyenv/versions/3.10.12/envs/py310/lib/python3.10/site-packages/nvidia/cudnn/lib/
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.pyenv/versions/3.10.12/envs/py310/lib/python3.10/site-packages/tensorrt_libs/
+#export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/lib/cuda
 
 # hook function to send wakatime a tick
 # pre_prompt_command() {
@@ -223,5 +222,6 @@ export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/lib/cuda
 
 
 ## for nvim
-export PATH="$HOME/.nvim/nvim/bin/:$HOME/.nvim/node/bin/:$PATH"
+export PATH="$HOME/.nvim/nvim/bin/:$HOME/.local/bin/:$PATH"
+
 
