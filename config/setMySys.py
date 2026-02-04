@@ -44,19 +44,19 @@ clis="\
 sudo apt-get install vim git git-lfs gcc build-essential gfortran gdb python3 \
     bash-completion python3-pip pandoc tmux wget axel \
     tig graphviz rsync doxygen libgsl-dev libblas-dev liblapack-dev \
-    htop libgeos++-dev proj-bin  libproj-dev libgeos.dev global cscope dos2unix \
+    htop libgeos++-dev proj-bin  libproj-dev  global cscope dos2unix \
     upower pciutils sshfs universal-ctags unzip lftp \
     atool highlight w3m mediainfo catdoc docx2txt xlsx2csv \
     ncdu tldr fd-find exa icdiff silversearcher-ag fzf ripgrep parallel newsboat \
-    taskwarrior rclone fdupes "
+    taskwarrior rclone fdupes  valgrind cppcheck pmccabe curl \
+    python3-numpy python3-matplotlib python3-pandas python3-ipython python3-scipy python3-cartopy python3-pygments"
 
-#transmission-daemon transmission-cli trash-cli
+    #transmission-daemon transmission-cli trash-cli
 
 pips="\
 #pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ ;\n\
 pip3 config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple/ ;\n\
 pip3 install -U pip ;\n\
-pip3 install -U numpy matplotlib pandas ipython scipy tk cartopy pygments;\n\
 pip3 install -U keras tensorflow-gpu pydot sklearn scikit-learn pyforest geopandas memory_profiler;\n\
 "
 
