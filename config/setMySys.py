@@ -25,6 +25,7 @@ gits=[
 "git config --global http.postBuffer 1048576000      ;",
 "git config --global user.email \"lipengbo@msn.com\" ;",
 "git config --global user.name  \"lipengbo\"         ;",
+"git config --global core.hooksPath ~/.githooks      ;",
 "git config --global core.editor vim                 ;"]
 
 flpk= "\
@@ -66,18 +67,20 @@ def setConfig():
     ln -sf /dev/shm/ ~/.cache; \n\
     rm -rf ~/.adobe; \n\
     ln -sf /dev/shm/ ~/.adobe; \n\
+    ln -sf /dev/shm/ ~/.adobe; \n\
     "
     os.system(exSet)
 
     pwd=os.getcwd()
     lnlist=["bashrc","i3/config", "ctags.conf", "gtags.conf", "i3blocks.conf", "tmux.conf",
-        "vimrc", "Xresources", "snippets","gitconfig"]
+        "vimrc", "Xresources", "snippets","gitconfig","githooks"]
 
 
     for ln in lnlist:
         cmd='rm -rf ~/.%s; ln -sf %s/%s ~/.%s '%(ln,pwd,ln,ln)
         print(cmd)
         os.system(cmd)
+
 
     cmd = "rm -rf ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
     os.system(cmd)

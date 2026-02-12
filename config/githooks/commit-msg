@@ -1,0 +1,47 @@
+#!/bin/bash
+# .git/hooks/commit-msg
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# 提交信息格式检查（遵循 Conventional Commits）
+if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert)(\(.+\))?: .+"; then
+#if ! echo "$commit_msg" | grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert)(\(.+\))?: .{1,}"; then
+    cat << EOF
+❌ 提交信息格式错误！
+请使用 Conventional Commits 格式：
+<类型>(<范围>): <描述>
+
+示例：
+feat(auth): 添加用户登录功能
+fix(api): 修复数据查询错误
+
+允许的类型：
+feat     - 新功能
+fix      - 修复 bug
+docs     - 文档更新
+style    - 代码格式
+refactor - 重构
+test     - 测试
+chore    - 构建/工具变更
+perf     - 性能优化
+build    - 构建系统
+ci       - CI 配置
+revert   - 回滚
+EOF
+    exit 1
+fi
+
+# 检查描述长度
+if [ ${#COMMIT_MSG} -lt 10 ]; then
+    echo "❌ 提交信息太短，请提供更详细的描述"
+    exit 1
+fi
+
+# 提交信息长度检查
+if [ ${#commit_msg} -gt 100 ]; then
+    echo "❌ 提交信息过长，请保持在100字符以内"
+    exit 1
+fi
+
+echo "✅ 提交信息格式正确"
