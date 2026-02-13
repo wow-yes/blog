@@ -73,7 +73,7 @@ def setConfig():
 
     pwd=os.getcwd()
     lnlist=["bashrc","i3/config", "ctags.conf", "gtags.conf", "i3blocks.conf", "tmux.conf",
-        "vimrc", "Xresources", "snippets","gitconfig","githooks"]
+        "vimrc", "Xresources", "snippets"]
 
 
     for ln in lnlist:
