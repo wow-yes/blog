@@ -91,9 +91,12 @@ let g:lightline = {
 set laststatus=2 "显示状态栏
 set noshowmode " 状态栏下面不在单独显示模式
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'flazz/vim-colorschemes'
+Plug 'sheerun/vim-polyglot'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_Gtagsconf=expand('~/.gtags.conf')
@@ -186,6 +189,13 @@ let g:gutentags_plus_switch = 1 "Change focus to quickfix window after search (o
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_trace = 0 "调试程序
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'skywind3000/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+
+nnoremap <silent> <leader>r :GtagsCword<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 
@@ -243,6 +253,11 @@ augroup VimG
     autocmd FileType vim,tex let b:autoformat_autoindent=0
 augroup END
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'editorconfig/editorconfig-vim'
+Plug 'aperezdc/vim-template'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'preservim/vim-markdown'
 let g:vim_markdown_math = 1
 let g:vim_markdown_folding_level = 6
