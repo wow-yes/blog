@@ -1,0 +1,24 @@
+#!/bin/bash
+# Git pre-commit hook: 自动格式化 C/C++、Python、Markdown 文件
+
+# 获取即将提交的文件列表
+FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+# 遍历文件并根据类型调用格式化工具
+for file in $FILES; do
+    case "$file" in
+        *.c|*.cpp|*.h|*.hpp)
+            echo "Formatting C/C++ file: $file"
+            clang-format -i "$file" #-style=.clangformat
+            git add "$file"
+            ;;
+        *.py)
+            echo "Formatting Python file: $file"
+            black "$file"
+            git add "$file"
+            ;;
+    esac
+done
+
+exit 0
+
