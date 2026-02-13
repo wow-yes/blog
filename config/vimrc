@@ -6,6 +6,12 @@ filetype indent on    "自动检测文件类型并进行缩进高亮
 
 let mapleader=" "
 
+set lazyredraw          " 延迟重绘（提升性能）
+set ttyfast             " 快速终端连接
+set magic               " 使用正则魔法模式 搜索优化
+set linebreak           " 在单词边界折行
+set showbreak=↪\        " 折行显示符号
+
 set shiftwidth=4           "设置制表符宽度"
 set expandtab           " 用空格代替制表符
 set tabstop=4           "设置制表符宽度"
