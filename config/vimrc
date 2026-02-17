@@ -1,10 +1,14 @@
 set nocompatible        " 避免以前版本的一些bug和局限
-syntax on        "设置语法高亮
+set bg=dark
+syntax on "设置语法高亮
 filetype on
 filetype plugin on
 filetype indent on    "自动检测文件类型并进行缩进高亮
 
 let mapleader=" "
+
+set path+=**
+set wildmenu
 
 set lazyredraw          " 延迟重绘（提升性能）
 set ttyfast             " 快速终端连接
@@ -12,20 +16,27 @@ set magic               " 使用正则魔法模式 搜索优化
 set linebreak           " 在单词边界折行
 set showbreak=↪\        " 折行显示符号
 set shortmess+=a
+set backspace=indent,eol,start  " 更好的退格键行为
+set whichwrap+=<,>,h,l  " 光标行首行尾时自动换行
 
-set shiftwidth=4           "设置制表符宽度"
+set shiftwidth=4        " 设置制表符宽度"
 set expandtab           " 用空格代替制表符
-set tabstop=4           "设置制表符宽度"
+set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
+
 set nobomb
 set encoding=utf-8
 
+set nowrapscan
+
 set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
-set clipboard=unnamed "共享剪贴板
+set clipboard=unnamed   " 共享剪贴板
 
 set number              " 设置行号
 set hlsearch
 set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+
+set tw=81
 set cc=81
 
 set showmatch           " 显示匹配的括号
@@ -34,9 +45,13 @@ set autowrite
 set nowrap
 set cursorline
 
+set title
+set titlestring=%F
 
-set laststatus=2 "显示状态栏
-set noshowmode " 状态栏下面不在单独显示模式
+set history=1000
+
+set laststatus=2        " 显示状态栏
+set noshowmode          " 状态栏下面不在单独显示模式
 
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -82,5 +97,4 @@ func! SetFortran()
     let fortran_fold_conditionals=1
 endfunc
 
-set bg=dark
 colorscheme desert
