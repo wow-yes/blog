@@ -6,26 +6,34 @@ filetype indent on    "自动检测文件类型并进行缩进高亮
 
 let mapleader=" "
 
+set path+=**
+set wildmenu
+
 set lazyredraw          " 延迟重绘（提升性能）
 set ttyfast             " 快速终端连接
 set magic               " 使用正则魔法模式 搜索优化
 set linebreak           " 在单词边界折行
 set showbreak=↪\        " 折行显示符号
 set shortmess+=a
+set backspace=indent,eol,start  " 更好的退格键行为
+set whichwrap+=<,>,h,l  " 光标行首行尾时自动换行
 
-set shiftwidth=4           "设置制表符宽度"
+set shiftwidth=4        " 设置制表符宽度"
 set expandtab           " 用空格代替制表符
-set tabstop=4           "设置制表符宽度"
+set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
+
 set nobomb
 set encoding=utf-8
 
 set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
-set clipboard=unnamed "共享剪贴板
+set clipboard=unnamed   " 共享剪贴板
 
 set number              " 设置行号
 set hlsearch
 set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+
+set tw=81
 set cc=81
 
 set showmatch           " 显示匹配的括号
@@ -34,9 +42,27 @@ set autowrite
 set nowrap
 set cursorline
 
+set title
+set titlestring=%F
 
-set laststatus=2 "显示状态栏
-set noshowmode " 状态栏下面不在单独显示模式
+set laststatus=2        " 显示状态栏
+set noshowmode          " 状态栏下面不在单独显示模式
+
+" 1. 设置目录列表样式为树形 (默认是0: 精简列表)
+let g:netrw_liststyle = 3
+
+" 2. 设置打开文件的方式：在新水平分割窗口中打开
+"    (可选值: 1-在新水平窗口, 2-在新垂直窗口, 3-在新标签页, 4-在之前的窗口)
+let g:netrw_browse_split = 2
+
+" 3. 设置文件浏览器窗口的宽度 (例如: 25%)
+let g:netrw_winsize = 25
+
+" 4. 隐藏/显示横幅 (0: 隐藏横幅, 1: 显示横幅)
+let g:netrw_banner = 0
+
+" 5. 让Netrw的浏览目录跟随Vim的当前目录
+let g:netrw_keepdir = 0
 
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
