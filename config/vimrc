@@ -6,24 +6,42 @@ filetype indent on    "自动检测文件类型并进行缩进高亮
 
 let mapleader=" "
 
+set lazyredraw          " 延迟重绘（提升性能）
+set ttyfast             " 快速终端连接
+set magic               " 使用正则魔法模式 搜索优化
+set linebreak           " 在单词边界折行
+set showbreak=↪\        " 折行显示符号
+set shortmess+=a
+
 set shiftwidth=4           "设置制表符宽度"
 set expandtab           " 用空格代替制表符
 set tabstop=4           "设置制表符宽度"
 set softtabstop=4
-set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
-set clipboard=unnamed "共享剪贴板
 set nobomb
 set encoding=utf-8
+
+set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
+set clipboard=unnamed "共享剪贴板
+
 set number              " 设置行号
 set hlsearch
-set cc=81
-set showmatch           " 显示匹配的括号
 set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+set cc=81
+
+set showmatch           " 显示匹配的括号
 set autoread
 set autowrite
-"set autochdir "设置根据打开文件自动更换目录
 set nowrap
 set cursorline
+
+
+set laststatus=2 "显示状态栏
+set noshowmode " 状态栏下面不在单独显示模式
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+  set grepformat=%f:%l:%c:%m
+endif
 
 set undofile  "使得即使在文件关闭后也可以维护撤消历史记录
 if !isdirectory(expand("~/.vim/undofiles"))
@@ -42,13 +60,6 @@ if !isdirectory(expand("~/.vim/swapfiles"))
     call mkdir($HOME . "/.vim/swapfiles", "p")
 endif
 set dir=~/.vim/swapfiles//
-
-command! InsPlug :! curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-if empty(glob($HOME."/.vim/autoload/plug.vim"))
-    echo 'No Bundle, Try InsBundle'
-    finish
-endif
 
 func! SetFortran()    
     let s:extfname = expand("%:e")
@@ -71,200 +82,5 @@ func! SetFortran()
     let fortran_fold_conditionals=1
 endfunc
 
-call plug#begin()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dstein64/vim-startuptime'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'filename': '%F'
-      \ }
-      \ }
-
-set laststatus=2 "显示状态栏
-set noshowmode " 状态栏下面不在单独显示模式
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'flazz/vim-colorschemes'
-Plug 'sheerun/vim-polyglot'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-let g:Lf_ShortcutF = "<leader>ff"
-let g:Lf_Gtagsconf=expand('~/.gtags.conf')
-let g:Lf_WorkingDirectoryMode = 'AF'
-let g:Lf_RootMarkers = ['.project', '.git']
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-let g:Lf_ShowDevIcons = 0
-let g:Lf_WildIgnore={ 'file':['*.lib', '*.a', '*.o', '*.d', '*.so', ],'dir':['tmp', '.git', 'api', 'attachments', 'images', 'img', 'download',  ]}
-
-noremap <silent> <leader>fb :Leaderf buffer <CR>
-noremap <silent> <leader>fm :Leaderf mru    <CR>
-noremap <silent> <leader>ft :Leaderf bufTag <CR>
-noremap <silent> <leader>fl :Leaderf line   <CR>
-
-let g:Lf_GtagsAutoGenerate = 1
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf  gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf  gtags --previous %s", "")<CR><CR>
-
-let g:Lf_CursorBlink =1 
-let g:Lf_DefaultExternalTool = 'rg'
-nmap <unique> <leader>fr0 <Plug>LeaderfRgPrompt
-nmap <unique> <leader>fra <Plug>LeaderfRgCwordLiteralNoBoundary
-nmap <unique> <leader>frb <Plug>LeaderfRgCwordLiteralBoundary
-nmap <unique> <leader>frc <Plug>LeaderfRgCwordRegexNoBoundary
-nmap <unique> <leader>frd <Plug>LeaderfRgCwordRegexBoundary
-vmap <unique> <leader>fra <Plug>LeaderfRgVisualLiteralNoBoundary
-vmap <unique> <leader>frb <Plug>LeaderfRgVisualLiteralBoundary
-vmap <unique> <leader>frc <Plug>LeaderfRgVisualRegexNoBoundary
-vmap <unique> <leader>frd <Plug>LeaderfRgVisualRegexBoundary
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ludovicchabant/vim-gutentags' "符号索引 
-
-let $GTAGSLABEL = 'native-pygments' " 'native'
-let $GTAGSCONF = expand('~/.gtags.conf')
-"let g:gutentags_ctags_executable = expand('~/Projects/bins/bin/universal-ctags')
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-au BufRead,BufEnter * let g:gutentags_ctags_tagfile = &filetype.'.tags'
-let g:gutentags_modules = []
-if executable('ctags')
-    let g:gutentags_modules += ['ctags']
-endif
-if executable('gtags-cscope') && executable('gtags')
-    let g:gutentags_modules += ['gtags_cscope']
-endif
-
-let g:gutentags_ctags_exclude=['*.trace']
-
-" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-if !isdirectory(s:vim_tags)                   "检测~/.cache/tags 不存在就新建
-   silent! call mkdir(s:vim_tags, 'p')
-endif
-
-let g:gutentags_ctags_extra_args  = ['--fields=+niazSl']
-
-if &filetype=='cpp'
-    let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-endif
-if &filetype=='c'
-    let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-endif
-
-if &filetype=='fortran'
-    let g:gutentags_ctags_extra_args += ['--fortran-kinds=+imv']
-endif
-
-" Get ctags version
-let g:ctags_version = system('ctags --version')[0:8]
-
-" 如果使用 universal ctags 需要增加下面一行
-if g:ctags_version == "Universal"
-    let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']
-    if &filetype=='markdown'
-        let g:gutentags_ctags_extra_args += ['--markdown-kinds=+cs']
-    endif
-endif
-
-let g:gutentags_auto_add_gtags_cscope = 1 " 禁用 gutentags 自动加载 gtags 数据库的行为
-let g:gutentags_plus_switch = 1 "Change focus to quickfix window after search (optional).
-"Enable advanced commands: GutentagsToggleTrace, etc.
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_trace = 0 "调试程序
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'skywind3000/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
-
-nnoremap <silent> <leader>r :GtagsCword<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dense-analysis/ale'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_loclist = 1
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
-let g:ale_lint_on_text_changed='always' "文件内容发生变化时不检查
-let g:ale_lint_on_enter = 1  "打开文件时不检查
-
-"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
-let g:ale_linters = {
-    \   'c++': ['clang','cppcheck','gcc'],
-    \   'c': ['clang','cppcheck','gcc'],
-    \   'python': ['pylint','flake8'],
-    \}
-        
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'vim-autoformat/vim-autoformat'
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-"
-"" 设置触发快捷键
-"nmap <Leader>f :Files<CR>
-"nmap <Leader>b :Buffers<CR>
-"nmap <Leader>h :History<CR>
-"nmap <Leader>l :Lines<CR>
-"
-"" 设置 fzf 使用 ripgrep 进行内容搜索
-"if executable('rg')
-"    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-"    let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-"endif
-"
-"" 界面设置：使用弹出窗口（需要较新版本的 Vim 或 Neovim）
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Plug 'godlygeek/tabular'
-
-augroup VimG
-    autocmd!
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    autocmd BufRead      *.sh        set filetype=bash
-    autocmd BufRead      *.snippets  set filetype=snippets
-    autocmd BufWritePre  *.c,*.py,*.sh   :%s/\s\+$//e 
-    autocmd FileType vim,tex let b:autoformat_autoindent=0
-augroup END
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'editorconfig/editorconfig-vim'
-Plug 'aperezdc/vim-template'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'preservim/vim-markdown'
-let g:vim_markdown_math = 1
-let g:vim_markdown_folding_level = 6
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
-let g:tex_conceal = ""
-let g:vim_markdown_conceal = 0
-
-call plug#end()            " required
-set bg=dark                                                                                                                                                                              
+set bg=dark
+colorscheme desert
