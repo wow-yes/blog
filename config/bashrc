@@ -224,4 +224,3 @@ PS1+="\[\033[1;32m\]$: \[\e[0m\]"
 ## for nvim
 export PATH="$HOME/.local/bin/:$PATH"
 
-
