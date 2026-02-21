@@ -72,21 +72,14 @@ def setConfig():
     os.system(exSet)
 
     pwd=os.getcwd()
-    lnlist=["bashrc","i3/config", "ctags.conf", "gtags.conf", "i3blocks.conf", "tmux.conf",
+    lnlist=["bashrc","i3/config", "i3blocks.conf", "tmux.conf",
         "vimrc", "Xresources", "snippets"]
-
 
     for ln in lnlist:
         cmd='rm -rf ~/.%s; ln -sf %s/%s ~/.%s '%(ln,pwd,ln,ln)
         print(cmd)
         os.system(cmd)
 
-
-    cmd = "rm -rf ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle"
-    os.system(cmd)
-
-    cmd = "rm -rf ~/.tmux/plugins/tpm; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-    os.system(cmd)
 
 def printhelp():
     print("setMySys help \n",

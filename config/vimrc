@@ -1,9 +1,9 @@
 set nocompatible        " 避免以前版本的一些bug和局限
 set bg=dark
-syntax on "设置语法高亮
 filetype on
 filetype plugin on
 filetype indent on    "自动检测文件类型并进行缩进高亮
+syntax on
 
 let mapleader=" "
 
@@ -25,7 +25,9 @@ set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
 
 set nobomb
-set encoding=utf-8
+set fileencoding=utf-8 " 设置新文件的默认编码为 UTF-8
+set encoding=utf-8 " 设置 Vim 内部的编码
+set fileencodings=utf-8,gbk,gb2312,gb18030,cp936,ucs-bom,latin1 " 设置读取文件时尝试的编码顺序
 
 set nowrapscan
 
@@ -49,8 +51,14 @@ set title
 set titlestring=%F
 
 set history=1000
-
 set laststatus=2        " 显示状态栏
+
+set statusline=
+set statusline+=\ %F                         " 仅文件名
+set statusline+=%m                          " 修改/只读标志
+set statusline+=\|%{&fileencoding}    " 文件编码
+set statusline+=%=
+set statusline+=\ %l/%L,%c\ (%p%%)\              " 行号/总行数 百分比
 set noshowmode          " 状态栏下面不在单独显示模式
 
 if executable('rg')
@@ -58,43 +66,52 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 
-set undofile  "使得即使在文件关闭后也可以维护撤消历史记录
-if !isdirectory(expand("~/.vim/undofiles"))
-    call mkdir($HOME . "/.vim/undofiles", "p")
-endif
-set undodir=~/.vim/undofiles
+set undofile        "使得即使在文件关闭后也可以维护撤消历史记录
+set backup          "允许生成备份文件"
+set swapfile        "允许生成swap文件"
 
-set backup            "允许生成备份文件"
-if !isdirectory(expand("~/.vim/backupfiles"))
-    call mkdir($HOME . "/.vim/backupfiles", "p")
-endif
-set backupdir=~/.vim/backupfiles
+let g:netrw_browse_split = 4
 
-set swapfile          "允许生成swap文件"
-if !isdirectory(expand("~/.vim/swapfiles"))
-    call mkdir($HOME . "/.vim/swapfiles", "p")
-endif
-set dir=~/.vim/swapfiles//
+augroup VimG
+    autocmd!
+    autocmd BufNewFile *.py         0r ~/.vim/templates/template.py
+    autocmd BufNewFile *.sh         0r ~/.vim/templates/template.sh
+    autocmd BufNewFile *.c          0r ~/.vim/templates/template.c
+    autocmd BufNewFile *[mM]akefile 0r ~/.vim/templates/template.makefile
+    " remeber filepos
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " auto mkdir
+    autocmd BufWritePre * if @% !~# '\(ftp\)\|\/\/' | silent! call mkdir(expand('%:p:h'), 'p') | endif
+    autocmd BufRead * set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+    autocmd BufWritePre * set fileencoding=utf-8
+    autocmd QuickFixCmdPost * if len(getqflist()) != 0 | copen | cfirst | endif
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC " autoload vimrc
 
-func! SetFortran()    
-    let s:extfname = expand("%:e")
-    if s:extfname ==? "f90"
-        let fortran_free_source=1
-        unlet! fortran_fixed_source
-    elseif s:extfname ==? "F90"
-        let fortran_free_source=1
-        unlet! fortran_fixed_source
-    else
-        let fortran_fixed_source=1
-        unlet! fortran_free_source
-    endif
-    let fortran_more_precise=1
-    "去掉固定格式每行开头的红色填充
-    let fortran_have_tabs=1
-    "允许折叠
-    let fortran_do_enddo=1
-    let fortran_fold=1
-    let fortran_fold_conditionals=1
-endfunc
+    " 超过 10MB 的文件自动禁用某些功能
+    autocmd BufReadPre *
+          \ if getfsize(expand("<afile>")) > 10 * 1024 * 1024 |
+          \   setlocal eventignore+=FileType |
+          \   syntax off |
+          \   setlocal noundofile noswapfile nobackup |
+          \   setlocal nowrap |
+          \ endif
+
+    " 自动识别日志文件并高亮
+    autocmd BufReadPost *.log,*.log.*
+          \ syntax match LogError '\c.*\<error\>.*' |
+          \ syntax match LogWarn '\c.*\<warn\>.*' |
+          \ syntax match LogInfo '\c.*\<info\>.*'
+
+    autocmd VimLeave 
+        \if !empty(expand('%')) && getcwd() != $HOME | 
+        \   mksession! .lastsession.vim |
+        \endif
+
+    " 启动时检查并加载当前目录的会话文件
+    autocmd VimEnter * 
+        \if argc() == 0 && filereadable('.lastsession.vim') |
+        \   so .lastsession.vim |
+        \endif
+augroup END
 
 colorscheme desert
