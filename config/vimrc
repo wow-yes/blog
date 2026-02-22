@@ -8,7 +8,6 @@ syntax on
 let mapleader=" "
 
 set path+=**
-set wildmenu
 
 set lazyredraw          " 延迟重绘（提升性能）
 set ttyfast             " 快速终端连接
@@ -47,17 +46,26 @@ set autowrite
 set nowrap
 set cursorline
 
-set title
-set titlestring=%F
+if !isdirectory(expand("~/.vimcache/"))
+    call mkdir($HOME . "/.vimcache", "p")
+endif
 
-set history=1000
+let g:netrw_liststyle = 3
+let g:netrw_home =$HOME.'/.vimcache/'
+
+set backup            "允许生成备份文件"
+set backupdir=~/.vimcache
+set swapfile          "允许生成swap文件"
+set directory=~/.vimcache
+set undofile          "使得即使在文件关闭后也可以维护撤消历史记录
+set undodir=~/.vimcache
 
 set laststatus=2        " 显示状态栏
 set statusline=
 set statusline+=%#ErrorMsg#\ [%{toupper(mode())}]\ 
 set statusline+=%#DiffAdd#\ %F
 set statusline+=\ %#MoreMsg#\%m%r%w
-set statusline+=%#LineNr#
+set statusline+=%#StatuslineNC#
 set statusline+=%=
 set statusline+=%#DiffAdd#
 set statusline+=\ %Y\ \|
@@ -81,13 +89,6 @@ augroup VimG
     autocmd QuickFixCmdPost * if len(getqflist()) != 0 | copen | cfirst | endif
     autocmd BufWritePost $MYVIMRC source $MYVIMRC " autoload vimrc
 
-    autocmd VimLeave * if !empty(expand('%')) && getcwd() != $HOME | mksession! ./.lastsession.vim | endif
-
-    " 启动时检查并加载当前目录的会话文件
-    autocmd VimEnter * 
-        \if argc() == 0 && filereadable('.lastsession.vim') |
-        \   so ./.lastsession.vim |
-        \endif
 augroup END
 
 colorscheme gruvbox

@@ -258,6 +258,14 @@ augroup VimG
     autocmd BufRead      *.snippets  set filetype=snippets
     autocmd BufWritePre  *.c,*.py,*.sh   :%s/\s\+$//e 
     autocmd FileType vim,tex let b:autoformat_autoindent=0
+
+    autocmd VimLeave * if !empty(expand('%')) && getcwd() != $HOME | mksession! ./.lastsession.vim | endif
+
+    " 启动时检查并加载当前目录的会话文件
+    autocmd VimEnter * 
+        \if argc() == 0 && filereadable('.lastsession.vim') |
+        \   so ./.lastsession.vim |
+        \endif
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

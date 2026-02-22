@@ -1,3 +1,4 @@
+#!/bin/bash
 pacman -S --needed mingw-w64-ucrt-x86_64-clang #21.1.8-4
 pacman -S --needed mingw-w64-ucrt-x86_64-cppcheck #2.19.1-1
 pacman -S --needed mingw-w64-ucrt-x86_64-crt #13.0.0.r505.g7d006b2ea-1
