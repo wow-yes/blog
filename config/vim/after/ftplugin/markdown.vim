@@ -16,9 +16,6 @@ setlocal errorformat=
       \%+A%f:%l:%c:\ %m,
       \%+C%\\s%#%m
 
-" 行内公式 $...$
-
-
 " 自定义命令
 command! -buffer MakePDF  setlocal makeprg=pandoc\ %\ -s\ -o\ %<.pdf
 command! -buffer MakeHTML setlocal makeprg=pandoc\ %\ -s\ -o\ %<.html

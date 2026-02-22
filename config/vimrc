@@ -60,6 +60,20 @@ set directory=~/.vimcache
 set undofile          "使得即使在文件关闭后也可以维护撤消历史记录
 set undodir=~/.vimcache
 
+if !isdirectory(expand("~/.vimcache/"))
+    call mkdir($HOME . "/.vimcache", "p")
+endif
+
+let g:netrw_liststyle = 3
+let g:netrw_home =$HOME.'/.vimcache/'
+
+set backup            "允许生成备份文件"
+set backupdir=~/.vimcache
+set swapfile          "允许生成swap文件"
+set directory=~/.vimcache
+set undofile          "使得即使在文件关闭后也可以维护撤消历史记录
+set undodir=~/.vimcache
+
 set laststatus=2        " 显示状态栏
 set statusline=
 set statusline+=%#ErrorMsg#\ [%{toupper(mode())}]\ 
@@ -90,5 +104,7 @@ augroup VimG
     autocmd BufWritePost $MYVIMRC source $MYVIMRC " autoload vimrc
 
 augroup END
+
+nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 
 colorscheme gruvbox
