@@ -29,8 +29,6 @@ set fileencoding=utf-8 " 设置新文件的默认编码为 UTF-8
 set encoding=utf-8 " 设置 Vim 内部的编码
 set fileencodings=utf-8,gbk,gb2312,gb18030,cp936,ucs-bom,big5,latin1 " 设置读取文件时尝试的编码顺序
 
-set nowrapscan
-
 set completeopt+=popup
 
 set autoindent          " 继承前一行的缩进方式，特别适用于多行注释
@@ -92,4 +90,4 @@ augroup VimG
         \endif
 augroup END
 
-colorscheme molokai 
+colorscheme gruvbox
