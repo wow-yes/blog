@@ -101,10 +101,11 @@ augroup VimG
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     autocmd BufWritePre * if @% !~# '\(ftp\)\|\/\/' | silent! call mkdir(expand('%:p:h'), 'p') | endif
     autocmd QuickFixCmdPost * if len(getqflist()) != 0 | copen | cfirst | endif
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC " autoload vimrc
-
 augroup END
 
-nnoremap <leader>m :silent make\|redraw!\|cc<CR>
+nnoremap <F5> :silent make\|redraw!\|cc<CR>
+nnoremap <F6> :cnext<CR>
+nnoremap <F7> :cprevious<CR>
+nnoremap <F8> :cclose<CR>
 
 colorscheme gruvbox
