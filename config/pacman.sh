@@ -18,7 +18,6 @@ pacman -S --needed mingw-w64-ucrt-x86_64-ripgrep #15.1.0-1
 pacman -S --needed mingw-w64-ucrt-x86_64-tools #13.0.0.r505.g7d006b2ea-1
 pacman -S --needed mingw-w64-ucrt-x86_64-winpthreads #13.0.0.r505.g7d006b2ea-1
 pacman -S --needed mingw-w64-ucrt-x86_64-winstorecompat #13.0.0.r505.g7d006b2ea-1
-pacman -S --needed mingw-w64-ucrt-x86_64-global
 pacman -S --needed mingw-w64-ucrt-x86_64-python-black
-pacman -S --needed mingw-w64-ucrt-x86_64-ripgrep mingw-w64-ucrt-x86_64-cmake
-pacman -S --needed ncdu neofetch openssh parallel procps-ng rsync tmux tree unzip vim axel p7zip unzip tig git
+pacman -S --needed mingw-w64-ucrt-x86_64-ripgrep mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-bat
+pacman -S --needed ncdu neofetch openssh parallel procps-ng rsync tmux tree unzip vim axel p7zip unzip tig git make
