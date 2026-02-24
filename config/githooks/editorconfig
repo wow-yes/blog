@@ -1,0 +1,42 @@
+# 顶层配置文件
+root = true
+
+# 默认规则（适用于所有文件）
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# 通用缩进
+indent_style = space
+indent_size = 4
+
+# Makefile 特殊要求：必须用 Tab
+[Makefile]
+indent_style = tab
+
+# Markdown 文件：保留行尾空格（用于换行）
+[*.md]
+trim_trailing_whitespace = false
+
+# Python 文件
+[*.py]
+indent_style = space
+indent_size = 4
+
+# C/C++ 源码
+[*.{c,cpp,h,hpp}]
+indent_style = space
+indent_size = 4
+
+# JSON/YAML 配置文件
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# HTML/CSS/JS 前端文件
+[*.{html,css,js}]
+indent_style = space
+indent_size = 2
+
