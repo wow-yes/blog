@@ -22,6 +22,7 @@ set shiftwidth=4        " 设置制表符宽度"
 set expandtab           " 用空格代替制表符
 set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
+set virtualedit=block 
 
 set nobomb
 set fileencoding=utf-8 " 设置新文件的默认编码为 UTF-8
