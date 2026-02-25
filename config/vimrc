@@ -1,3 +1,4 @@
+source $VIMRUNTIME/defaults.vim
 set nocompatible        " 避免以前版本的一些bug和局限
 set bg=dark
 filetype on
@@ -99,7 +100,6 @@ endif
 augroup VimG
     autocmd!
 
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     autocmd BufWritePre * if @% !~# '\(ftp\)\|\/\/' | silent! call mkdir(expand('%:p:h'), 'p') | endif
     autocmd QuickFixCmdPost * if len(getqflist()) != 0 | copen | cfirst | endif
 augroup END

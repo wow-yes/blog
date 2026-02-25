@@ -1,3 +1,5 @@
+let c_functions=1
+let c_function_pointers=1
 setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
 if filereadable(getcwd().'/Makefile') || filereadable(getcwd().'/makefile') 
     setlocal makeprg=make\ -j4
