@@ -1,4 +1,5 @@
-setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
+"setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
+compiler gcc
 if filereadable(getcwd().'/Makefile') || filereadable(getcwd().'/makefile') 
     setlocal makeprg=make\ -j4
 else
