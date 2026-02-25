@@ -45,7 +45,7 @@ else
     # 复制gitignore到目标目录
     echo "Copy Doxyfile     to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/Doxyfile"     "$TARGET_DIR/Doxyfile"
     echo "Copy Makefile     to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/Makefile"     "$TARGET_DIR/Makefile"
-    echo "Copy clangformat  to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/clangformat"  "$TARGET_DIR/.clangformat"
+    echo "Copy clangformat  to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/clang-format"  "$TARGET_DIR/.clang-format"
     echo "Copy editorconfig to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/editorconfig" "$TARGET_DIR/.editorconfig"
     echo "Copy gitignore    to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/gitignore"    "$TARGET_DIR/.gitignore"
     echo "Copy gitproxy.sh  to '$TARGET_DIR'"; cp  "$SCRIPT_DIR/gitproxy.sh"  "$TARGET_DIR/gitproxy.sh"

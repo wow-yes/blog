@@ -35,7 +35,6 @@ AlignEscapedNewlines: Left
 AlignArrayOfStructures: Right
 
 # 括号对齐方式
-AlignAfterOpenBracket: true  # 对齐开括号后的内容
 AlignConsecutiveAssignments: true  # 对齐连续的赋值语句
 AlignConsecutiveDeclarations: true  # 对齐连续的声明
 
