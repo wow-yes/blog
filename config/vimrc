@@ -1,10 +1,5 @@
 source $VIMRUNTIME/defaults.vim
-set nocompatible        " 避免以前版本的一些bug和局限
 set bg=dark
-filetype on
-filetype plugin on
-filetype indent on    "自动检测文件类型并进行缩进高亮
-syntax on
 
 let mapleader=" "
 
@@ -62,20 +57,6 @@ set directory=~/.vimcache
 set undofile          "使得即使在文件关闭后也可以维护撤消历史记录
 set undodir=~/.vimcache
 
-if !isdirectory(expand("~/.vimcache/"))
-    call mkdir($HOME . "/.vimcache", "p")
-endif
-
-let g:netrw_liststyle = 3
-let g:netrw_home =$HOME.'/.vimcache/'
-
-set backup            "允许生成备份文件"
-set backupdir=~/.vimcache
-set swapfile          "允许生成swap文件"
-set directory=~/.vimcache
-set undofile          "使得即使在文件关闭后也可以维护撤消历史记录
-set undodir=~/.vimcache
-
 set laststatus=2        " 显示状态栏
 set statusline=
 set statusline+=%#ErrorMsg#\ [%{toupper(mode())}]\ 
@@ -90,19 +71,10 @@ set statusline+=\ %{toupper(&fileformat)}\ \|
 set statusline+=\ %{(&bomb?\",BOM\":\"NOBOM\")}\ \|
 set statusline+=\ %l/%L,%c\ (%p%%)
 
-set noshowmode
-
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set grepformat=%f:%l:%c:%m
 endif
-
-augroup VimG
-    autocmd!
-
-    autocmd BufWritePre * if @% !~# '\(ftp\)\|\/\/' | silent! call mkdir(expand('%:p:h'), 'p') | endif
-    autocmd QuickFixCmdPost * if len(getqflist()) != 0 | copen | cfirst | endif
-augroup END
 
 nnoremap <F5> :silent make\|redraw!\|cc<CR>
 nnoremap <F6> :cnext<CR>
