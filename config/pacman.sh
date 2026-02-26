@@ -20,4 +20,4 @@ pacman -S --needed mingw-w64-ucrt-x86_64-winpthreads #13.0.0.r505.g7d006b2ea-1
 pacman -S --needed mingw-w64-ucrt-x86_64-winstorecompat #13.0.0.r505.g7d006b2ea-1
 pacman -S --needed mingw-w64-ucrt-x86_64-python-black
 pacman -S --needed mingw-w64-ucrt-x86_64-ripgrep mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-bat mingw-w64-ucrt-x86_64-ctags 
-pacman -S --needed ncdu neofetch openssh parallel procps-ng rsync tmux tree unzip vim axel p7zip unzip tig git make
+pacman -S --needed ncdu neofetch openssh parallel procps-ng rsync tmux tree unzip vim axel p7zip unzip tig git make colordiff
