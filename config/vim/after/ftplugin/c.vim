@@ -13,3 +13,4 @@ function! s:SwitchToExe()
 endfunction
 
 command! MakeExe call s:SwitchToExe()
+
