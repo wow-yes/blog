@@ -15,6 +15,9 @@ function! HighlightMacrosFromTags()
 
     " 遍历 tags 文件
     for l:line in readfile(l:tagsfile)
+        if l:line =~ '^!' || l:line =~ '^\s*$'
+            continue
+        endif
         " 宏的 kind 可能是 d 或 p
         if l:line =~ '\t.*;"\t[dp]'
             "echom "line " .l:line
@@ -32,5 +35,5 @@ endfunction
 call HighlightMacrosFromTags()
 
 hi def link cMacroName PreProc
-
 syn match cOperator "&&\|||"
+
