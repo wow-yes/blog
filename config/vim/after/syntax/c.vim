@@ -2,14 +2,16 @@
 " 自动根据 tags 文件高亮 C 语言中的宏和全局变量
 " 自动从 ctags 文件加载宏名并高亮
 
-" 自动从 ctags 文件加载宏名并高亮
+" 注释设置
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//\ %s         " 注释格式
 
 "syntax clear cMacroName
 syntax keyword cMacroName PLACEHOLDER_MACRO
 function! HighlightMacrosFromTags()
     let l:tagsfile = findfile('tags', '.;')
     if empty(l:tagsfile)
-        echom "No tags" 
+        "echon "\nNo tags" 
         return
     endif
 
