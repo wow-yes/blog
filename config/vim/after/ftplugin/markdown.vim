@@ -9,5 +9,7 @@ setlocal formatoptions+=r
 let g:tex_conceal = ""  " 防止公式内容被隐藏
 let g:markdown_fenced_languages = ['html', 'python', 'javascript', 'css', 'vim', 'sh', 'c']
 
-compiler pandoc 
+if has('patch-9.1.0276')
+    compiler pandoc 
+endif
 
