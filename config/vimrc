@@ -91,6 +91,86 @@ endif
 
 call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 安装 vim-lsp 和 asyncomplete 插件
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" 基础 LSP 设置
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_highlights_delay = 200
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '⚠'}
+let g:lsp_signs_hint = {'text': '?'}
+let g:lsp_signs_information = {'text': 'i'}
+
+" 快捷键映射
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    
+    " 定义快捷键
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K :LspHover<CR>
+    
+    " 代码操作
+    nmap <buffer> <leader>ca :LspCodeAction<CR>
+    vmap <buffer> <leader>ca :LspCodeAction<CR>
+    
+    " 文档符号
+    nmap <buffer> <leader>ds :LspDocumentSymbol<CR>
+    nmap <buffer> <leader>ws :LspWorkspaceSymbol<CR>
+endfunction
+
+augroup lsp_install
+    au!
+    " 当 LSP 启用时调用上面的函数
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+" C++ 配置 (使用 clangd)
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+" 或者使用 pylsp (python-lsp-server)
+if executable('pylsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ 'workspace_config': {
+        \   'pylsp': {
+        \     'configurationSources': ['flake8'],
+        \     'plugins': {
+        \       'pyflakes': {'enabled': v:false},
+        \       'pycodestyle': {'enabled': v:false},
+        \       'flake8': {'enabled': v:true},
+        \       'pydocstyle': {'enabled': v:true},
+        \       'autopep8': {'enabled': v:true},
+        \       'yapf': {'enabled': v:true},
+        \       'mccabe': {'enabled': v:true},
+        \       'preload': {'enabled': v:true},
+        \       'rope_completion': {'enabled': v:true},
+        \     }
+        \   }
+        \ }
+        \ })
+endif
+let g:lsp_semantic_enabled = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 Plug 'vim-python/python-syntax', { 'for': 'python' }
