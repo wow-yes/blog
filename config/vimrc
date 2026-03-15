@@ -82,3 +82,58 @@ nnoremap <F7> :cprevious<CR>
 nnoremap <F8> :cclose<CR>
 
 colorscheme gruvbox
+
+command! InsPlug :! curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+if empty(glob($HOME."/.vim/autoload/plug.vim"))
+    finish
+endif
+
+call plug#begin()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'tpope/vim-fugitive'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'godlygeek/tabular'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp', 'c'] }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'dense-analysis/ale', { 'for': ['cpp', 'c','python'] }
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_loclist = 1
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+let g:ale_lint_on_text_changed='always' "文件内容发生变化时不检查
+let g:ale_lint_on_enter = 1  "打开文件时不检查
+
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+    \   'c++': ['clang','gcc'],
+    \   'c': ['clang','gcc'],
+    \   'python': ['pylint','flake8'],
+    \}
+        
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" 设置触发快捷键
+nmap <Leader>f :Files<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>l :Lines<CR>
+
+" 设置 fzf 使用 ripgrep 进行内容搜索
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+endif
+
+" 界面设置：使用弹出窗口（需要较新版本的 Vim 或 Neovim）
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#end()            " required
