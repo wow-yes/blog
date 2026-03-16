@@ -6,36 +6,36 @@
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=//\ %s         " 注释格式
 
-"syntax clear cMacroName
-syntax keyword cMacroName PLACEHOLDER_MACRO
-function! HighlightMacrosFromTags()
-    let l:tagsfile = findfile('tags', '.;')
-    if empty(l:tagsfile)
-        "echon "\nNo tags" 
-        return
-    endif
-
-    " 遍历 tags 文件
-    for l:line in readfile(l:tagsfile)
-        if l:line =~ '^!' || l:line =~ '^\s*$'
-            continue
-        endif
-        " 宏的 kind 可能是 d 或 p
-        if l:line =~ '\t.*;"\t[dp]'
-            "echom "line " .l:line
-            let l:macro = matchstr(l:line, '^[^\t]\+')
-            if !empty(l:macro)
-                "echom "Found macro: " . l:macro
-                exe 'syntax keyword cMacroName ' . l:macro
-            endif
-        endif
-    endfor
-
-    " 设置高亮颜色（黄色）
-endfunction
-
-call HighlightMacrosFromTags()
-
-hi def link cMacroName PreProc
-syn match cOperator "&&\|||"
-
+""syntax clear cMacroName
+"syntax keyword cMacroName PLACEHOLDER_MACRO
+"function! HighlightMacrosFromTags()
+"    let l:tagsfile = findfile('tags', '.;')
+"    if empty(l:tagsfile)
+"        "echon "\nNo tags" 
+"        return
+"    endif
+"
+"    " 遍历 tags 文件
+"    for l:line in readfile(l:tagsfile)
+"        if l:line =~ '^!' || l:line =~ '^\s*$'
+"            continue
+"        endif
+"        " 宏的 kind 可能是 d 或 p
+"        if l:line =~ '\t.*;"\t[dp]'
+"            "echom "line " .l:line
+"            let l:macro = matchstr(l:line, '^[^\t]\+')
+"            if !empty(l:macro)
+"                "echom "Found macro: " . l:macro
+"                exe 'syntax keyword cMacroName ' . l:macro
+"            endif
+"        endif
+"    endfor
+"
+"    " 设置高亮颜色（黄色）
+"endfunction
+"
+"call HighlightMacrosFromTags()
+"
+"hi def link cMacroName PreProc
+"syn match cOperator "&&\|||"
+"

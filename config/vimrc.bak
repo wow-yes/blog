@@ -284,4 +284,79 @@ let g:vim_markdown_conceal = 0
 call plug#end()            " required
 set bg=dark                                                                                                                                                                              
 
+" 安装 vim-lsp 和 asyncomplete 插件
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+let g:asyncomplete_auto_popup = 1 
+let g:asyncomplete_auto_completeopt = 0
+
+let g:lsp_async_completion = 1           " [关键] 异步补全
+let g:asyncomplete_min_chars = 2         " 延迟触发，降低负载
+let g:lsp_completion_documentation_enabled = 0 " 如果需要文档就保持1，感觉慢可以设为0
+
+
+" 当补全菜单可见时：
+"   <Tab> 向下选择 (相当于 Ctrl-n)
+"   <S-Tab> 向上选择 (相当于 Ctrl-p)
+" 如果菜单不可见，则插入普通的 Tab 字符
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
+
+" 当补全菜单可见时：
+"   用 <Enter> 确认选中项，并关闭菜单 (asyncomplete#close_popup())
+"   而不是换行。如果菜单不可见，则正常换行。
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+let g:lsp_insert_text_enabled = 1
+let g:lsp_text_edit_enabled = 1
+
+" 基础 LSP 设置
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_highlights_delay = 200
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '⚠'}
+let g:lsp_signs_hint = {'text': '?'}
+let g:lsp_signs_information = {'text': 'i'}
+
+" C++ 配置 (使用 clangd)
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+" 或者使用 pylsp (python-lsp-server)
+if executable('pylsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ 'workspace_config': {
+        \   'pylsp': {
+        \     'configurationSources': ['flake8'],
+        \     'plugins': {
+        \       'pyflakes': {'enabled': v:false},
+        \       'pycodestyle': {'enabled': v:false},
+        \       'flake8': {'enabled': v:true},
+        \       'pydocstyle': {'enabled': v:true},
+        \       'autopep8': {'enabled': v:true},
+        \       'yapf': {'enabled': v:true},
+        \       'mccabe': {'enabled': v:true},
+        \       'preload': {'enabled': v:true},
+        \       'rope_completion': {'enabled': v:true},
+        \     }
+        \   }
+        \ }
+        \ })
+endif
+let g:lsp_semantic_enabled = 1
+
+
 colorscheme gruvbox
