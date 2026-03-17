@@ -99,8 +99,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" 3. 桥梁：将 vim-lsp 的诊断连接到 ale
-Plug 'rhysd/vim-lsp-ale'
+Plug 'rhysd/vim-lsp-ale' " 3. 桥梁：将 vim-lsp 的诊断连接到 ale
 
 " 禁止光标悬停时自动显示诊断浮窗
 let g:lsp_diagnostics_float_cursor = 0
@@ -111,8 +110,6 @@ let g:lsp_diagnostics_float_insert_mode_enabled = 0
 " vim-lsp 通用设置
 " --------------------------------
 " 告诉 vim-lsp 使用 pylsp (Python Language Server)
-" 注意: 只要安装了 'vim-lsp-settings'，它会在你第一次打开 Python 文件时
-"       自动检测并提示你安装 'pylsp'。你只需确认，剩下的交给它。
 if executable('pylsp')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pylsp',
@@ -178,8 +175,8 @@ let g:tex_conceal = ""
 let g:vim_markdown_conceal = 0
 
 " Theme """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'flazz/vim-colorschemes'
-Plug 'sheerun/vim-polyglot'
+"Plug 'flazz/vim-colorschemes'
+"Plug 'sheerun/vim-polyglot'
 "Plug 'vim-python/python-syntax', { 'for': 'python' }
 "Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp', 'c'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
