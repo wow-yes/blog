@@ -93,84 +93,62 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
+"Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" 3. 桥梁：将 vim-lsp 的诊断连接到 ale
+Plug 'rhysd/vim-lsp-ale'
 
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"" --------------------------------
-"" vim-lsp 通用设置
-"" --------------------------------
-"" 告诉 vim-lsp 使用 pylsp (Python Language Server)
-"" 注意: 只要安装了 'vim-lsp-settings'，它会在你第一次打开 Python 文件时
-""       自动检测并提示你安装 'pylsp'。你只需确认，剩下的交给它。
-"if executable('pylsp')
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pylsp',
-"        \ 'cmd': {server_info->['pylsp']},
-"        \ 'allowlist': ['python'],
-"        \ })
-"endif
-"
-"" 当 LSP 服务器为一个缓冲区启用时，自动进行一些设置
-"function! s:on_lsp_buffer_enabled() abort
-"    " 设置补全函数，让 asyncomplete 知道如何获取补全项
-"    setlocal omnifunc=lsp#complete
-"
-"    " 定义常用的 LSP 操作快捷键
-"    nmap <buffer> gd <plug>(lsp-definition)          " 跳转到定义
-"    nmap <buffer> gr <plug>(lsp-references)          " 查找引用
-"    nmap <buffer> K <plug>(lsp-hover)                " 显示悬停文档
-"    nmap <buffer> [g <plug>(lsp-previous-diagnostic) " 上一个错误/警告
-"    nmap <buffer> ]g <plug>(lsp-next-diagnostic)     " 下一个错误/警告
-"endfunction
-"
-"augroup lsp_install
-"    au!
-"    " 当 LSP 就绪时调用上面的设置函数
-"    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-"augroup END
-"
-"" --------------------------------
-"" asyncomplete.vim 设置
-"" --------------------------------
-"" 启用自动弹出补全菜单
-"let g:asyncomplete_auto_popup = 1
-"
-"" 配置 <Tab> 和 <CR> (回车) 键的行为，这是最关键的一步
-"" 当补全菜单可见时：
-""   <Tab> 向下选择 (相当于 Ctrl-n)
-""   <Shift-Tab> 向上选择 (相当于 Ctrl-p)
-""   <CR> 确认选中当前项并关闭菜单
-"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-"
-"" 手动触发补全 (可选，当你不想等待自动弹出时使用)
-"imap <c-space> <Plug>(asyncomplete_force_refresh)
+" 禁止光标悬停时自动显示诊断浮窗
+let g:lsp_diagnostics_float_cursor = 0
+" 可选：禁止插入模式下的诊断浮窗
+let g:lsp_diagnostics_float_insert_mode_enabled = 0
+
+" --------------------------------
+" vim-lsp 通用设置
+" --------------------------------
+" 告诉 vim-lsp 使用 pylsp (Python Language Server)
+" 注意: 只要安装了 'vim-lsp-settings'，它会在你第一次打开 Python 文件时
+"       自动检测并提示你安装 'pylsp'。你只需确认，剩下的交给它。
+if executable('pylsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+"   <CR> 确认选中当前项并关闭菜单
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+" 手动触发补全 (可选，当你不想等待自动弹出时使用)
+imap <c-space> <Plug>(asyncomplete_force_refresh)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'godlygeek/tabular'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'dense-analysis/ale', { 'for': ['cpp', 'c','python'] }
-"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"let g:ale_set_loclist = 1
-"let g:ale_open_list = 0
-"let g:ale_keep_list_window_open = 0
-"let g:ale_lint_on_text_changed='always' "文件内容发生变化时不检查
-"let g:ale_lint_on_enter = 1  "打开文件时不检查
-"
-""使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
-"let g:ale_linters = {
-"    \   'c++': ['clang','gcc'],
-"    \   'c': ['clang','gcc'],
-"    \   'python': ['pylint','flake8'],
-"    \}
-"        
+Plug 'dense-analysis/ale', { 'for': ['cpp', 'c','python'] }
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_loclist = 1
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+let g:ale_lint_on_text_changed='always' "文件内容发生变化时不检查
+let g:ale_lint_on_enter = 1  "打开文件时不检查
+
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+    \   'c++': [],
+    \   'c':   [],
+    \   'python': [],
+    \}
+        
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
