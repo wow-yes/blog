@@ -19,6 +19,7 @@ set expandtab           " 用空格代替制表符
 set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
 set virtualedit=block 
+set termguicolors
 
 set nobomb
 set fileencoding=utf-8 " 设置新文件的默认编码为 UTF-8
@@ -178,8 +179,8 @@ let g:tex_conceal = ""
 let g:vim_markdown_conceal = 0
 
 " Theme """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'flazz/vim-colorschemes'
-Plug 'sheerun/vim-polyglot'
+"Plug 'flazz/vim-colorschemes'
+"Plug 'sheerun/vim-polyglot'
 "Plug 'vim-python/python-syntax', { 'for': 'python' }
 "Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp', 'c'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
