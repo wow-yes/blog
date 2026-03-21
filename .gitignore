@@ -413,3 +413,5 @@ doxy/*
 *.o
 *.exe
 plugged/
+extensions/
+memos.json

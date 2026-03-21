@@ -1,0 +1,135 @@
+---
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -readability-magic-numbers,
+  -readability-identifier-naming,
+
+CheckOptions:
+  # ========== 宏定义检查 ==========
+  # 宏名必须全大写
+  - key: readability-identifier-naming.MacroDefinition
+    value: UPPER_CASE
+  - key: readability-identifier-naming.MacroDefinition.IgnoreFailedSplit
+    value: 'false'
+  
+  # ========== 枚举检查 ==========
+  # 枚举类型名：PascalCase
+  - key: readability-identifier-naming.Enum
+    value: CamelCase
+  - key: readability-identifier-naming.Enum.IgnoreFailedSplit
+    value: 'false'
+  # 枚举值：全大写，下划线分隔
+  - key: readability-identifier-naming.EnumConstant
+    value: UPPER_CASE
+  - key: readability-identifier-naming.EnumConstant.IgnoreFailedSplit
+    value: 'false'
+  
+  # ========== 结构体检查 ==========
+  # 结构体类型名：PascalCase
+  - key: readability-identifier-naming.Struct
+    value: CamelCase
+  - key: readability-identifier-naming.Struct.IgnoreFailedSplit
+    value: 'false'
+  # 成员变量：camelCase（使用 lower_case 近似）
+  - key: readability-identifier-naming.Member
+    value: lower_case
+  - key: readability-identifier-naming.Member.IgnoreFailedSplit
+    value: 'false'
+  
+  # ========== typedef 检查 ==========
+  - key: readability-identifier-naming.TypeAlias
+    value: CamelCase
+  - key: readability-identifier-naming.Typedef
+    value: CamelCase
+  
+  # ========== 变量检查 ==========
+  # 局部变量：camelCase
+  - key: readability-identifier-naming.Variable
+    value: lower_case
+  - key: readability-identifier-naming.Variable.IgnoreFailedSplit
+    value: 'false'
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  
+  # 全局变量：g_ 前缀 + camelCase
+  - key: readability-identifier-naming.GlobalVariable
+    value: lower_case
+  - key: readability-identifier-naming.GlobalVariable.Prefix
+    value: g_
+  
+  # 静态变量：s_ 前缀 + camelCase
+  - key: readability-identifier-naming.StaticVariable
+    value: lower_case
+  - key: readability-identifier-naming.StaticVariable.Prefix
+    value: s_
+  
+  # ========== 函数检查 ==========
+  # 函数名：PascalCase
+  - key: readability-identifier-naming.Function
+    value: CamelCase
+  - key: readability-identifier-naming.Function.IgnoreFailedSplit
+    value: 'false'
+  
+  # 参数：camelCase
+  - key: readability-identifier-naming.Parameter
+    value: lower_case
+  - key: readability-identifier-naming.Parameter.IgnoreFailedSplit
+    value: 'false'
+  - key: readability-identifier-naming.ParameterPack
+    value: lower_case
+
+  # 函数声明/定义格式检查
+  - key: readability-function-size
+    value: '1'
+  - key: readability-function-size.LineThreshold
+    value: '100'
+  - key: readability-function-size.StatementThreshold
+    value: '50'
+  
+  # 行长度检查
+  - key: cppcoreguidelines-avoid-magic-numbers
+    value: '1'
+  
+  
+  # ========== 魔法数字检查 ==========
+  - key: readability-magic-numbers.IgnoredNumbers
+    value: '0;1;2;3;4;5;6;7;8;9;10; -1'
+  - key: readability-magic-numbers.IgnoreAllCapsNumbers
+    value: 'true'
+  - key: readability-magic-numbers.IgnoreBitFields
+    value: 'true'
+
+  # 忽略循环变量（如 i, j, k）
+  - key: readability-identifier-length.IgnoreLoopVariableNames
+    value: '1'
+
+  # 大括号风格检查
+  - key: readability-braces-around-statements
+    value: '1'
+  
+  # 控制语句后必须加大括号
+  - key: readability-braces-around-statements.ShortStatementLines
+    value: '1'
+  
+  # 函数参数对齐检查
+  - key: readability-parameter-name
+    value: '1'
+  
+  # 运算符周围空格检查
+  - key: readability-operators-representation
+    value: '1'
+ 
+
+

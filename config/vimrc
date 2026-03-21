@@ -94,8 +94,21 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+",'for':['cpp', 'c','python']
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 在你的 .vimrc 中
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+if $MSYSTEM != ''
+    let $COC_CONFIG_HOME = expand('/c/msys64//home/'.$USERNAME.'/.vim')
+    let g:coc_config_home = $COC_CONFIG_HOME
+    let g:coc_data_home = $COC_CONFIG_HOME
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

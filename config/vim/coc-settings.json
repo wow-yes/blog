@@ -1,16 +1,13 @@
 {
     "semanticTokens.enable": true,
     "semanticTokens.highlightPriority": 1024,
-
     "clangd.enabled": true,
     "clangd.arguments": [
         "--clang-tidy",
         "--header-insertion=never"
     ],
     "diagnostic.enable": true,
-    "diagnostic.displayByAle": false,
-    "diagnostic.errorSign": "✖",
-    "diagnostic.warningSign": "⚠",
-    "diagnostic.infoSign": "ℹ",
-    "diagnostic.displayByAle": false,
+    "inlayHint.subSeparator": "︴",
+    "inlayHints.enableParameter": true,
+    "clangd.inlayHints.sep": "⇝"
 }
