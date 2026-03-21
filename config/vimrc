@@ -94,59 +94,12 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
-
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'  " 可选，自动配置 LSP 服务器
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'rhysd/vim-lsp-ale' " 3. 桥梁：将 vim-lsp 的诊断连接到 ale
-
-" 禁止光标悬停时自动显示诊断浮窗
-let g:lsp_diagnostics_float_cursor = 0
-" 可选：禁止插入模式下的诊断浮窗
-let g:lsp_diagnostics_float_insert_mode_enabled = 0
-
-" --------------------------------
-" vim-lsp 通用设置
-" --------------------------------
-" 告诉 vim-lsp 使用 pylsp (Python Language Server)
-if executable('pylsp')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-"   <CR> 确认选中当前项并关闭菜单
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
-" 手动触发补全 (可选，当你不想等待自动弹出时使用)
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'godlygeek/tabular'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dense-analysis/ale', { 'for': ['cpp', 'c','python'] }
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_loclist = 1
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
-let g:ale_lint_on_text_changed='always' "文件内容发生变化时不检查
-let g:ale_lint_on_enter = 1  "打开文件时不检查
-
-"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
-let g:ale_linters = {
-    \   'c++': [],
-    \   'c':   [],
-    \   'python': [],
-    \}
-        
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
