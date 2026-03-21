@@ -1,13 +1,29 @@
 {
     "semanticTokens.enable": true,
+
     "semanticTokens.highlightPriority": 1024,
+
     "clangd.enabled": true,
     "clangd.arguments": [
         "--clang-tidy",
         "--header-insertion=never"
     ],
+    "clangd.inlayHints.sep": "⇝",
+    "clangd.semanticHighlighting": true,
+
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnType": false,
+
+    "diagnostic.virtualText": true,
     "diagnostic.enable": true,
+    "diagnostic.virtualTextPrefix": "",
+    "diagnostic.virtualTextCurrentLineOnly": false,
+
     "inlayHint.subSeparator": "︴",
     "inlayHints.enableParameter": true,
-    "clangd.inlayHints.sep": "⇝"
+
+
+    "git.enableGutters": true,         
+    "git.addGBlameToVirtualText": true,
+    "git.blame.highlight": "Comment"   
 }

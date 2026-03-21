@@ -13,12 +13,15 @@ set showbreak=↪\        " 折行显示符号
 set shortmess+=a
 set backspace=indent,eol,start  " 更好的退格键行为
 set whichwrap+=<,>,h,l  " 光标行首行尾时自动换行
+set list
+set listchars=tab:▸\ ,trail:␣,extends:>,precedes:<,nbsp:+
+
 
 set shiftwidth=4        " 设置制表符宽度"
 set expandtab           " 用空格代替制表符
 set tabstop=4           " 设置制表符宽度"
 set softtabstop=4
-set virtualedit=block 
+set virtualedit=block
 set termguicolors
 
 set nobomb
@@ -35,7 +38,7 @@ set number              " 设置行号
 set hlsearch
 set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
 
-set tw=81
+set tw=81 
 set cc=81
 
 set showmatch           " 显示匹配的括号
@@ -60,7 +63,7 @@ set undodir=~/.vimcache
 
 set laststatus=2        " 显示状态栏
 set statusline=
-set statusline+=%#ErrorMsg#\ [%{toupper(mode())}]\ 
+set statusline+=%#ErrorMsg#\ [%{toupper(mode())}]\
 set statusline+=%#DiffAdd#\ %F
 set statusline+=\ %#MoreMsg#\%m%r%w
 set statusline+=%#StatuslineNC#
@@ -94,13 +97,20 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-",'for':['cpp', 'c','python']
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" 在你的 .vimrc 中
+Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" 代码编辑
+"nmap <leader>f <Plug>(coc-format)
+nmap <leader>ff <Plug>(coc-format-selected)
+nmap <leader>rn <Plug>(coc-rename)    " 重命名符号
+
+" 诊断和错误处理
+nmap <silent> [g <Plug>(coc-diagnostic-prev) " 上一个错误
+nmap <silent> ]g <Plug>(coc-diagnostic-next) " 下一个错误
 
 if $MSYSTEM != ''
     let $COC_CONFIG_HOME = expand('/c/msys64//home/'.$USERNAME.'/.vim')
@@ -108,9 +118,34 @@ if $MSYSTEM != ''
     let g:coc_data_home = $COC_CONFIG_HOME
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+let g:coc_diagnostic_virtual_text = 1
+let g:coc_enable_virtual_text = 1
+
+let g:coc_global_extensions = [
+    \ 'coc-git',
+    \ 'coc-clangd',
+    \ 'coc-pyright',
+    \ 'coc-snippets','coc-highlight'
+    \ ]
+
+" 使用 Tab 键在补全菜单中向下移动
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackSpace() ? "\<Tab>" :
+      \ coc#refresh()
+
+" 使用 Shift+Tab 向上移动
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" 使用 Enter 键确认当前选中的补全项
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" 辅助函数，用于检查光标前是否为空字符
+function! CheckBackSpace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'godlygeek/tabular'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,10 +176,5 @@ let g:vim_markdown_frontmatter = 1
 let g:tex_conceal = ""
 let g:vim_markdown_conceal = 0
 
-" Theme """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'flazz/vim-colorschemes'
-"Plug 'sheerun/vim-polyglot'
-"Plug 'vim-python/python-syntax', { 'for': 'python' }
-"Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp', 'c'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#end()            " required
