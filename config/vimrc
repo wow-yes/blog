@@ -15,7 +15,8 @@ set backspace=indent,eol,start  " 更好的退格键行为
 set whichwrap+=<,>,h,l  " 光标行首行尾时自动换行
 set list
 set listchars=tab:▸\ ,trail:␣,extends:>,precedes:<,nbsp:+
-
+set cinoptions={s " 大括号单独一行 (Allman 风格)
+set cinoptions+=:0
 
 set shiftwidth=4        " 设置制表符宽度"
 set expandtab           " 用空格代替制表符
@@ -99,6 +100,8 @@ Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
 
+if exists('*coc#start')
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -146,6 +149,8 @@ function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'godlygeek/tabular'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,17 +173,20 @@ endif
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'preservim/vim-markdown',{'for':'markdown'}
+Plug 'preservim/vim-markdown',{'for':['markdown']}
 let g:vim_markdown_math = 1
 let g:vim_markdown_folding_level = 6
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:tex_conceal = ""
 let g:vim_markdown_conceal = 0
+"
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/.vim/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+"Plug 'vimwiki/vimwiki'
+"let g:vimwiki_list = [{'path': '~/.vim/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#end()            " required

@@ -112,6 +112,7 @@ toc    : true
 snippet zett "Zettelkasten"
 ### `date +%y%m%d%H%M`${1}
 
+
 [目录](../)
 
 tags:
@@ -184,6 +185,7 @@ endsnippet
 
 遇到新的问题，要第一时间在自己的笔记仓库中寻找答案。如果没有，则在找到正确的答案之后，将其总结为条目添加到笔记仓库当中。我们的学习将与这个笔记仓库同步，随着仓库的完善而不断进化，发现新的问题。
 
+
 ![https://zettelkasten.de/introduction/2020-08-13-note-link.png](https://zettelkasten.de/introduction/2020-08-13-note-link.png)
 
 ## 5. 产出/输出
@@ -195,7 +197,6 @@ endsnippet
 
 
 ## 7. 参考资料
-
 
 - [为什么你要用卡片笔记法？ - 少数派](https://sspai.com/post/67923)
 - [用 Notion 实践卡片盒笔记法 - 少数派](https://sspai.com/post/64031)
