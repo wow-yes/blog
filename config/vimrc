@@ -39,9 +39,10 @@ set number              " 设置行号
 set hlsearch
 set incsearch           " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
 
-set tw=81 
+"set tw=81 
 set cc=81
 
+set ignorecase smartcase
 set showmatch           " 显示匹配的括号
 set autoread
 set autowrite

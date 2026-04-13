@@ -1,7 +1,6 @@
 setlocal wrap
 setlocal linebreak
 setlocal breakindent
-setlocal textwidth=80
 setlocal formatoptions+=t
 setlocal formatoptions+=r
 "setlocal foldmethod=expr foldexpr=MarkdownFold()
