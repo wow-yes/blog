@@ -97,10 +97,15 @@ endif
 call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dstein64/vim-startuptime'
+"Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release','for':['cpp', 'c','python']}
-
-if exists('*coc#start')
+let g:coc_global_extensions = [
+    \ 'coc-git',
+    \ 'coc-clangd',
+    \ 'coc-pyright',
+    \ 'coc-snippets','coc-highlight'
+    \ ]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -124,33 +129,6 @@ endif
 let g:coc_diagnostic_virtual_text = 1
 let g:coc_enable_virtual_text = 1
 
-let g:coc_global_extensions = [
-    \ 'coc-git',
-    \ 'coc-clangd',
-    \ 'coc-pyright',
-    \ 'coc-snippets','coc-highlight'
-    \ ]
-
-" 使用 Tab 键在补全菜单中向下移动
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackSpace() ? "\<Tab>" :
-      \ coc#refresh()
-
-" 使用 Shift+Tab 向上移动
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" 使用 Enter 键确认当前选中的补全项
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" 辅助函数，用于检查光标前是否为空字符
-function! CheckBackSpace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'godlygeek/tabular'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,13 +151,13 @@ endif
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'preservim/vim-markdown',{'for':['markdown']}
-let g:vim_markdown_math = 1
-let g:vim_markdown_folding_level = 6
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
-let g:tex_conceal = ""
-let g:vim_markdown_conceal = 0
-
+"Plug 'preservim/vim-markdown',{'for':['markdown']}
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_folding_level = 6
+"let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_frontmatter = 1
+"let g:tex_conceal = ""
+"let g:vim_markdown_conceal = 0
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#end()            " required
